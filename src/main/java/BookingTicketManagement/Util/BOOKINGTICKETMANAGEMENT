@@ -1,0 +1,810 @@
+drop database if exists `BOOKINGTICKETMANAGEMENT`;
+create schema `BOOKINGTICKETMANAGEMENT`;
+use `BOOKINGTICKETMANAGEMENT`;
+
+create table `user`
+(
+    `id` int not null auto_increment primary key,
+    `role` int not null,
+    `username` varchar(64) not null,
+    `password` varchar(64) not null,
+    `displayname` varchar(100) not null,
+    `isactive` int default'1', -- 0: not active, 1: active
+    `createdDate` datetime,
+    `createdBy` varchar(16),
+    `updatedDate` datetime,
+    `updatedBy` varchar(16),
+    `phonenumber` varchar(20),
+    `address` varchar(1000),
+    `email` varchar(50)
+);
+
+create table `role`
+(
+    `id` int not null auto_increment primary key,
+    `role` varchar(128) not null
+);
+
+alter table `user` 
+add constraint CT_USER_ROLE_FK 
+foreign key(`role`) references `role`(`id`);
+
+create table `type`
+(
+	`id` int not null auto_increment primary key,
+    `name` varchar(64) not null
+);
+
+create table `route`
+(
+	`id` int not null auto_increment primary key,
+    `from` varchar(128),
+    `to` varchar(128),
+    `timeGo` time,
+    `duration` time
+);
+
+create table `bus`
+(
+	`id` int not null auto_increment primary key,
+    `name` varchar(64) not null,
+    `type` int not null,
+    foreign key (`type`) references `type`(`id`)
+);
+
+create table `bus_route`
+(
+	`id` int not null auto_increment primary key,
+    `busId` int not null,
+    `routeId` int not null,
+	`price` float not null default 0,
+	foreign key (`busId`) references `bus`(`id`),
+	foreign key (`routeId`) references `route`(`id`)
+);
+
+create table `seat`
+(
+	`id` int not null auto_increment primary key,
+    `name` varchar(64) not null,
+    `bus` int not null,
+    foreign key (`bus`) references `bus`(`id`)
+);
+
+create table `booking`
+(
+	`id` int not null auto_increment primary key,
+    `user` int not null,
+    `seat` int not null,
+    `departure` datetime,
+    `route` int not null,
+    `createdDate` datetime,
+    `updatedDate` datetime,
+    `updatedBy` varchar(16),
+    `isactive` int default '1', /* 0: not active, 1 : active */
+    `ispaid` int default '0', /* 0: not pay, 1 : pay */
+     foreign key (`user`) references `user`(`id`),
+     foreign key (`seat`) references `seat`(`id`),
+     foreign key (`route`) references `route`(`id`)
+);
+
+insert `role`(`role`) values ('ADMIN');
+insert `role`(`role`) values ('SELLER');
+insert `role`(`role`) values ('CUSTOMER');
+
+insert `user`(`username`,`password`,`displayname`,`role`) 
+values(
+	'admin',
+    'admin',
+    'Admin',
+    1
+);
+
+insert `user`(`username`,`password`,`displayname`,`role`) 
+values(
+	'seller',
+    'seller',
+    'Seller',
+    2
+);
+
+insert `user`(`username`,`password`,`displayname`,`role`) 
+values(
+	'customer',
+    'customer',
+    'customer',
+    3
+);
+
+insert `type`(`name`)values("Non-bed");
+insert `type`(`name`)values("Bed");
+
+insert `bus`(`name`,`type`)
+values(
+		"Xe 1",
+        1
+);
+
+insert `bus`(`name`,`type`)
+values(
+		"Xe 2",
+        1
+);
+insert `bus`(`name`,`type`)
+values(
+		"Xe 3",
+        1
+);
+insert `bus`(`name`,`type`)
+values(
+		"Xe 4",
+        1
+);
+insert `bus`(`name`,`type`)
+values(
+		"Xe 5",
+        1
+);
+insert `bus`(`name`,`type`)
+values(
+		"Xe 6",
+        1
+);
+insert `bus`(`name`,`type`)
+values(
+		"Xe 7",
+        2
+);
+insert `bus`(`name`,`type`)
+values(
+		"Xe 8",
+        2
+);
+insert `bus`(`name`,`type`)
+values(
+		"Xe 9",
+        2
+);
+insert `bus`(`name`,`type`)
+values(
+		"Xe 10",
+        2
+);
+insert `bus`(`name`,`type`)
+values(
+		"Xe 11",
+        2
+);
+insert `bus`(`name`,`type`)
+values(
+		"Xe 12",
+        2
+);
+
+insert `route`(`from`,`to`,`timeGo`,`duration`)
+values(
+		"Tp Hồ Chí Minh",
+        "Đà Lạt",
+        "05:00:00",
+        "08:00:00"
+);
+insert `route`(`from`,`to`,`timeGo`,`duration`)
+values(
+		"Đà Lạt",
+        "Tp Hồ Chí Minh",
+        "14:00:00",
+        "08:00:00"
+);
+insert `route`(`from`,`to`,`timeGo`,`duration`)
+values(
+		"Tp Hồ Chí Minh",
+        "Cần Thơ",
+        "5:00:00",
+        "05:00:00"
+);
+insert `route`(`from`,`to`,`timeGo`,`duration`)
+values(
+        "Cần Thơ",
+		"Tp Hồ Chí Minh",
+        "14:00:00",
+        "05:00:00"
+);
+
+
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		1,
+        1,
+        100000
+);
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		2,
+        1,
+        100000
+);
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		3,
+        1,
+        100000
+);
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		7,
+        1,
+        150000
+);
+
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		8,
+        1,
+        150000
+);
+
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		9,
+        1,
+        150000
+);
+
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		1,
+        2,
+        100000
+);
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		2,
+        2,
+        100000
+);
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		3,
+        2,
+        100000
+);
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		7,
+        2,
+        150000
+);
+
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		8,
+        2,
+        150000
+);
+
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		9,
+        2,
+        150000
+);
+
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		4,
+        3,
+        200000
+);
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		5,
+        3,
+        200000
+);
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		6,
+        3,
+        200000
+);
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		10,
+        3,
+        250000
+);
+
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		11,
+        3,
+        250000
+);
+
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		12,
+        3,
+        250000
+);
+
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		4,
+        4,
+        200000
+);
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		5,
+        4,
+        200000
+);
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		6,
+        4,
+        200000
+);
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		10,
+        4,
+        250000
+);
+
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		11,
+        4,
+        250000
+);
+
+insert `bus_route`(`busId`,`routeId`,`price`)
+values(
+		12,
+        4,
+        250000
+);
+
+insert `seat`(`name`,`bus`)values("A1",1);
+insert `seat`(`name`,`bus`)values("A2",1);
+insert `seat`(`name`,`bus`)values("A3",1);
+insert `seat`(`name`,`bus`)values("A4",1);
+insert `seat`(`name`,`bus`)values("A5",1);
+insert `seat`(`name`,`bus`)values("A6",1);
+insert `seat`(`name`,`bus`)values("A7",1);
+insert `seat`(`name`,`bus`)values("B1",1);
+insert `seat`(`name`,`bus`)values("B2",1);
+insert `seat`(`name`,`bus`)values("B3",1);
+insert `seat`(`name`,`bus`)values("B4",1);
+insert `seat`(`name`,`bus`)values("B5",1);
+insert `seat`(`name`,`bus`)values("B6",1);
+insert `seat`(`name`,`bus`)values("B7",1);
+insert `seat`(`name`,`bus`)values("C1",1);
+insert `seat`(`name`,`bus`)values("C2",1);
+insert `seat`(`name`,`bus`)values("C3",1);
+insert `seat`(`name`,`bus`)values("C4",1);
+insert `seat`(`name`,`bus`)values("C5",1);
+insert `seat`(`name`,`bus`)values("C6",1);
+insert `seat`(`name`,`bus`)values("C7",1);
+insert `seat`(`name`,`bus`)values("D1",1);
+insert `seat`(`name`,`bus`)values("D2",1);
+insert `seat`(`name`,`bus`)values("D3",1);
+insert `seat`(`name`,`bus`)values("D4",1);
+insert `seat`(`name`,`bus`)values("D5",1);
+insert `seat`(`name`,`bus`)values("D6",1);
+insert `seat`(`name`,`bus`)values("D7",1);
+
+insert `seat`(`name`,`bus`)values("A1",2);
+insert `seat`(`name`,`bus`)values("A2",2);
+insert `seat`(`name`,`bus`)values("A3",2);
+insert `seat`(`name`,`bus`)values("A4",2);
+insert `seat`(`name`,`bus`)values("A5",2);
+insert `seat`(`name`,`bus`)values("A6",2);
+insert `seat`(`name`,`bus`)values("A7",2);
+insert `seat`(`name`,`bus`)values("B1",2);
+insert `seat`(`name`,`bus`)values("B2",2);
+insert `seat`(`name`,`bus`)values("B3",2);
+insert `seat`(`name`,`bus`)values("B4",2);
+insert `seat`(`name`,`bus`)values("B5",2);
+insert `seat`(`name`,`bus`)values("B6",2);
+insert `seat`(`name`,`bus`)values("B7",2);
+insert `seat`(`name`,`bus`)values("C1",2);
+insert `seat`(`name`,`bus`)values("C2",2);
+insert `seat`(`name`,`bus`)values("C3",2);
+insert `seat`(`name`,`bus`)values("C4",2);
+insert `seat`(`name`,`bus`)values("C5",2);
+insert `seat`(`name`,`bus`)values("C6",2);
+insert `seat`(`name`,`bus`)values("C7",2);
+insert `seat`(`name`,`bus`)values("D1",2);
+insert `seat`(`name`,`bus`)values("D2",2);
+insert `seat`(`name`,`bus`)values("D3",2);
+insert `seat`(`name`,`bus`)values("D4",2);
+insert `seat`(`name`,`bus`)values("D5",2);
+insert `seat`(`name`,`bus`)values("D6",2);
+insert `seat`(`name`,`bus`)values("D7",2);
+
+insert `seat`(`name`,`bus`)values("A1",3);
+insert `seat`(`name`,`bus`)values("A2",3);
+insert `seat`(`name`,`bus`)values("A3",3);
+insert `seat`(`name`,`bus`)values("A4",3);
+insert `seat`(`name`,`bus`)values("A5",3);
+insert `seat`(`name`,`bus`)values("A6",3);
+insert `seat`(`name`,`bus`)values("A7",3);
+insert `seat`(`name`,`bus`)values("B1",3);
+insert `seat`(`name`,`bus`)values("B2",3);
+insert `seat`(`name`,`bus`)values("B3",3);
+insert `seat`(`name`,`bus`)values("B4",3);
+insert `seat`(`name`,`bus`)values("B5",3);
+insert `seat`(`name`,`bus`)values("B6",3);
+insert `seat`(`name`,`bus`)values("B7",3);
+insert `seat`(`name`,`bus`)values("C1",3);
+insert `seat`(`name`,`bus`)values("C2",3);
+insert `seat`(`name`,`bus`)values("C3",3);
+insert `seat`(`name`,`bus`)values("C4",3);
+insert `seat`(`name`,`bus`)values("C5",3);
+insert `seat`(`name`,`bus`)values("C6",3);
+insert `seat`(`name`,`bus`)values("C7",3);
+insert `seat`(`name`,`bus`)values("D1",3);
+insert `seat`(`name`,`bus`)values("D2",3);
+insert `seat`(`name`,`bus`)values("D3",3);
+insert `seat`(`name`,`bus`)values("D4",3);
+insert `seat`(`name`,`bus`)values("D5",3);
+insert `seat`(`name`,`bus`)values("D6",3);
+insert `seat`(`name`,`bus`)values("D7",3);
+
+insert `seat`(`name`,`bus`)values("A1",4);
+insert `seat`(`name`,`bus`)values("A2",4);
+insert `seat`(`name`,`bus`)values("A3",4);
+insert `seat`(`name`,`bus`)values("A4",4);
+insert `seat`(`name`,`bus`)values("A5",4);
+insert `seat`(`name`,`bus`)values("A6",4);
+insert `seat`(`name`,`bus`)values("A7",4);
+insert `seat`(`name`,`bus`)values("B1",4);
+insert `seat`(`name`,`bus`)values("B2",4);
+insert `seat`(`name`,`bus`)values("B3",4);
+insert `seat`(`name`,`bus`)values("B4",4);
+insert `seat`(`name`,`bus`)values("B5",4);
+insert `seat`(`name`,`bus`)values("B6",4);
+insert `seat`(`name`,`bus`)values("B7",4);
+insert `seat`(`name`,`bus`)values("C1",4);
+insert `seat`(`name`,`bus`)values("C2",4);
+insert `seat`(`name`,`bus`)values("C3",4);
+insert `seat`(`name`,`bus`)values("C4",4);
+insert `seat`(`name`,`bus`)values("C5",4);
+insert `seat`(`name`,`bus`)values("C6",4);
+insert `seat`(`name`,`bus`)values("C7",4);
+insert `seat`(`name`,`bus`)values("D1",4);
+insert `seat`(`name`,`bus`)values("D2",4);
+insert `seat`(`name`,`bus`)values("D3",4);
+insert `seat`(`name`,`bus`)values("D4",4);
+insert `seat`(`name`,`bus`)values("D5",4);
+insert `seat`(`name`,`bus`)values("D6",4);
+insert `seat`(`name`,`bus`)values("D7",4);
+
+insert `seat`(`name`,`bus`)values("A1",5);
+insert `seat`(`name`,`bus`)values("A2",5);
+insert `seat`(`name`,`bus`)values("A3",5);
+insert `seat`(`name`,`bus`)values("A4",5);
+insert `seat`(`name`,`bus`)values("A5",5);
+insert `seat`(`name`,`bus`)values("A6",5);
+insert `seat`(`name`,`bus`)values("A7",5);
+insert `seat`(`name`,`bus`)values("B1",5);
+insert `seat`(`name`,`bus`)values("B2",5);
+insert `seat`(`name`,`bus`)values("B3",5);
+insert `seat`(`name`,`bus`)values("B4",5);
+insert `seat`(`name`,`bus`)values("B5",5);
+insert `seat`(`name`,`bus`)values("B6",5);
+insert `seat`(`name`,`bus`)values("B7",5);
+insert `seat`(`name`,`bus`)values("C1",5);
+insert `seat`(`name`,`bus`)values("C2",5);
+insert `seat`(`name`,`bus`)values("C3",5);
+insert `seat`(`name`,`bus`)values("C4",5);
+insert `seat`(`name`,`bus`)values("C5",5);
+insert `seat`(`name`,`bus`)values("C6",5);
+insert `seat`(`name`,`bus`)values("C7",5);
+insert `seat`(`name`,`bus`)values("D1",5);
+insert `seat`(`name`,`bus`)values("D2",5);
+insert `seat`(`name`,`bus`)values("D3",5);
+insert `seat`(`name`,`bus`)values("D4",5);
+insert `seat`(`name`,`bus`)values("D5",5);
+insert `seat`(`name`,`bus`)values("D6",5);
+insert `seat`(`name`,`bus`)values("D7",5);
+
+insert `seat`(`name`,`bus`)values("A1",6);
+insert `seat`(`name`,`bus`)values("A2",6);
+insert `seat`(`name`,`bus`)values("A3",6);
+insert `seat`(`name`,`bus`)values("A4",6);
+insert `seat`(`name`,`bus`)values("A5",6);
+insert `seat`(`name`,`bus`)values("A6",6);
+insert `seat`(`name`,`bus`)values("A7",6);
+insert `seat`(`name`,`bus`)values("B1",6);
+insert `seat`(`name`,`bus`)values("B2",6);
+insert `seat`(`name`,`bus`)values("B3",6);
+insert `seat`(`name`,`bus`)values("B4",6);
+insert `seat`(`name`,`bus`)values("B5",6);
+insert `seat`(`name`,`bus`)values("B6",6);
+insert `seat`(`name`,`bus`)values("B7",6);
+insert `seat`(`name`,`bus`)values("C1",6);
+insert `seat`(`name`,`bus`)values("C2",6);
+insert `seat`(`name`,`bus`)values("C3",6);
+insert `seat`(`name`,`bus`)values("C4",6);
+insert `seat`(`name`,`bus`)values("C5",6);
+insert `seat`(`name`,`bus`)values("C6",6);
+insert `seat`(`name`,`bus`)values("C7",6);
+insert `seat`(`name`,`bus`)values("D1",6);
+insert `seat`(`name`,`bus`)values("D2",6);
+insert `seat`(`name`,`bus`)values("D3",6);
+insert `seat`(`name`,`bus`)values("D4",6);
+insert `seat`(`name`,`bus`)values("D5",6);
+insert `seat`(`name`,`bus`)values("D6",6);
+insert `seat`(`name`,`bus`)values("D7",6);
+
+insert `seat`(`name`,`bus`)values("A1",7);
+insert `seat`(`name`,`bus`)values("A2",7);
+insert `seat`(`name`,`bus`)values("A3",7);
+insert `seat`(`name`,`bus`)values("A4",7);
+insert `seat`(`name`,`bus`)values("A5",7);
+insert `seat`(`name`,`bus`)values("A6",7);
+insert `seat`(`name`,`bus`)values("A7",7);
+insert `seat`(`name`,`bus`)values("B1",7);
+insert `seat`(`name`,`bus`)values("B2",7);
+insert `seat`(`name`,`bus`)values("B3",7);
+insert `seat`(`name`,`bus`)values("B4",7);
+insert `seat`(`name`,`bus`)values("B5",7);
+insert `seat`(`name`,`bus`)values("B6",7);
+insert `seat`(`name`,`bus`)values("B7",7);
+insert `seat`(`name`,`bus`)values("C1",7);
+insert `seat`(`name`,`bus`)values("C2",7);
+insert `seat`(`name`,`bus`)values("C3",7);
+insert `seat`(`name`,`bus`)values("C4",7);
+insert `seat`(`name`,`bus`)values("C5",7);
+insert `seat`(`name`,`bus`)values("C6",7);
+insert `seat`(`name`,`bus`)values("C7",7);
+insert `seat`(`name`,`bus`)values("D1",7);
+insert `seat`(`name`,`bus`)values("D2",7);
+insert `seat`(`name`,`bus`)values("D3",7);
+insert `seat`(`name`,`bus`)values("D4",7);
+insert `seat`(`name`,`bus`)values("D5",7);
+insert `seat`(`name`,`bus`)values("D6",7);
+insert `seat`(`name`,`bus`)values("D7",7);
+insert `seat`(`name`,`bus`)values("E1",7);
+insert `seat`(`name`,`bus`)values("E2",7);
+insert `seat`(`name`,`bus`)values("E3",7);
+insert `seat`(`name`,`bus`)values("E4",7);
+insert `seat`(`name`,`bus`)values("E5",7);
+insert `seat`(`name`,`bus`)values("E6",7);
+insert `seat`(`name`,`bus`)values("E7",7);
+insert `seat`(`name`,`bus`)values("F1",7);
+insert `seat`(`name`,`bus`)values("F2",7);
+insert `seat`(`name`,`bus`)values("F3",7);
+insert `seat`(`name`,`bus`)values("F4",7);
+insert `seat`(`name`,`bus`)values("F5",7);
+insert `seat`(`name`,`bus`)values("F6",7);
+insert `seat`(`name`,`bus`)values("F7",7);
+
+insert `seat`(`name`,`bus`)values("A1",8);
+insert `seat`(`name`,`bus`)values("A2",8);
+insert `seat`(`name`,`bus`)values("A3",8);
+insert `seat`(`name`,`bus`)values("A4",8);
+insert `seat`(`name`,`bus`)values("A5",8);
+insert `seat`(`name`,`bus`)values("A6",8);
+insert `seat`(`name`,`bus`)values("A7",8);
+insert `seat`(`name`,`bus`)values("B1",8);
+insert `seat`(`name`,`bus`)values("B2",8);
+insert `seat`(`name`,`bus`)values("B3",8);
+insert `seat`(`name`,`bus`)values("B4",8);
+insert `seat`(`name`,`bus`)values("B5",8);
+insert `seat`(`name`,`bus`)values("B6",8);
+insert `seat`(`name`,`bus`)values("B7",8);
+insert `seat`(`name`,`bus`)values("C1",8);
+insert `seat`(`name`,`bus`)values("C2",8);
+insert `seat`(`name`,`bus`)values("C3",8);
+insert `seat`(`name`,`bus`)values("C4",8);
+insert `seat`(`name`,`bus`)values("C5",8);
+insert `seat`(`name`,`bus`)values("C6",8);
+insert `seat`(`name`,`bus`)values("C7",8);
+insert `seat`(`name`,`bus`)values("D1",8);
+insert `seat`(`name`,`bus`)values("D2",8);
+insert `seat`(`name`,`bus`)values("D3",8);
+insert `seat`(`name`,`bus`)values("D4",8);
+insert `seat`(`name`,`bus`)values("D5",8);
+insert `seat`(`name`,`bus`)values("D6",8);
+insert `seat`(`name`,`bus`)values("D7",8);
+insert `seat`(`name`,`bus`)values("E1",8);
+insert `seat`(`name`,`bus`)values("E2",8);
+insert `seat`(`name`,`bus`)values("E3",8);
+insert `seat`(`name`,`bus`)values("E4",8);
+insert `seat`(`name`,`bus`)values("E5",8);
+insert `seat`(`name`,`bus`)values("E6",8);
+insert `seat`(`name`,`bus`)values("E7",8);
+insert `seat`(`name`,`bus`)values("F1",8);
+insert `seat`(`name`,`bus`)values("F2",8);
+insert `seat`(`name`,`bus`)values("F3",8);
+insert `seat`(`name`,`bus`)values("F4",8);
+insert `seat`(`name`,`bus`)values("F5",8);
+insert `seat`(`name`,`bus`)values("F6",8);
+insert `seat`(`name`,`bus`)values("F7",8);
+
+insert `seat`(`name`,`bus`)values("A1",9);
+insert `seat`(`name`,`bus`)values("A2",9);
+insert `seat`(`name`,`bus`)values("A3",9);
+insert `seat`(`name`,`bus`)values("A4",9);
+insert `seat`(`name`,`bus`)values("A5",9);
+insert `seat`(`name`,`bus`)values("A6",9);
+insert `seat`(`name`,`bus`)values("A7",9);
+insert `seat`(`name`,`bus`)values("B1",9);
+insert `seat`(`name`,`bus`)values("B2",9);
+insert `seat`(`name`,`bus`)values("B3",9);
+insert `seat`(`name`,`bus`)values("B4",9);
+insert `seat`(`name`,`bus`)values("B5",9);
+insert `seat`(`name`,`bus`)values("B6",9);
+insert `seat`(`name`,`bus`)values("B7",9);
+insert `seat`(`name`,`bus`)values("C1",9);
+insert `seat`(`name`,`bus`)values("C2",9);
+insert `seat`(`name`,`bus`)values("C3",9);
+insert `seat`(`name`,`bus`)values("C4",9);
+insert `seat`(`name`,`bus`)values("C5",9);
+insert `seat`(`name`,`bus`)values("C6",9);
+insert `seat`(`name`,`bus`)values("C7",9);
+insert `seat`(`name`,`bus`)values("D1",9);
+insert `seat`(`name`,`bus`)values("D2",9);
+insert `seat`(`name`,`bus`)values("D3",9);
+insert `seat`(`name`,`bus`)values("D4",9);
+insert `seat`(`name`,`bus`)values("D5",9);
+insert `seat`(`name`,`bus`)values("D6",9);
+insert `seat`(`name`,`bus`)values("D7",9);
+insert `seat`(`name`,`bus`)values("E1",9);
+insert `seat`(`name`,`bus`)values("E2",9);
+insert `seat`(`name`,`bus`)values("E3",9);
+insert `seat`(`name`,`bus`)values("E4",9);
+insert `seat`(`name`,`bus`)values("E5",9);
+insert `seat`(`name`,`bus`)values("E6",9);
+insert `seat`(`name`,`bus`)values("E7",9);
+insert `seat`(`name`,`bus`)values("F1",9);
+insert `seat`(`name`,`bus`)values("F2",9);
+insert `seat`(`name`,`bus`)values("F3",9);
+insert `seat`(`name`,`bus`)values("F4",9);
+insert `seat`(`name`,`bus`)values("F5",9);
+insert `seat`(`name`,`bus`)values("F6",9);
+insert `seat`(`name`,`bus`)values("F7",9);
+
+insert `seat`(`name`,`bus`)values("A1",10);
+insert `seat`(`name`,`bus`)values("A2",10);
+insert `seat`(`name`,`bus`)values("A3",10);
+insert `seat`(`name`,`bus`)values("A4",10);
+insert `seat`(`name`,`bus`)values("A5",10);
+insert `seat`(`name`,`bus`)values("A6",10);
+insert `seat`(`name`,`bus`)values("A7",10);
+insert `seat`(`name`,`bus`)values("B1",10);
+insert `seat`(`name`,`bus`)values("B2",10);
+insert `seat`(`name`,`bus`)values("B3",10);
+insert `seat`(`name`,`bus`)values("B4",10);
+insert `seat`(`name`,`bus`)values("B5",10);
+insert `seat`(`name`,`bus`)values("B6",10);
+insert `seat`(`name`,`bus`)values("B7",10);
+insert `seat`(`name`,`bus`)values("C1",10);
+insert `seat`(`name`,`bus`)values("C2",10);
+insert `seat`(`name`,`bus`)values("C3",10);
+insert `seat`(`name`,`bus`)values("C4",10);
+insert `seat`(`name`,`bus`)values("C5",10);
+insert `seat`(`name`,`bus`)values("C6",10);
+insert `seat`(`name`,`bus`)values("C7",10);
+insert `seat`(`name`,`bus`)values("D1",10);
+insert `seat`(`name`,`bus`)values("D2",10);
+insert `seat`(`name`,`bus`)values("D3",10);
+insert `seat`(`name`,`bus`)values("D4",10);
+insert `seat`(`name`,`bus`)values("D5",10);
+insert `seat`(`name`,`bus`)values("D6",10);
+insert `seat`(`name`,`bus`)values("D7",10);
+insert `seat`(`name`,`bus`)values("E1",10);
+insert `seat`(`name`,`bus`)values("E2",10);
+insert `seat`(`name`,`bus`)values("E3",10);
+insert `seat`(`name`,`bus`)values("E4",10);
+insert `seat`(`name`,`bus`)values("E5",10);
+insert `seat`(`name`,`bus`)values("E6",10);
+insert `seat`(`name`,`bus`)values("E7",10);
+insert `seat`(`name`,`bus`)values("F1",10);
+insert `seat`(`name`,`bus`)values("F2",10);
+insert `seat`(`name`,`bus`)values("F3",10);
+insert `seat`(`name`,`bus`)values("F4",10);
+insert `seat`(`name`,`bus`)values("F5",10);
+insert `seat`(`name`,`bus`)values("F6",10);
+insert `seat`(`name`,`bus`)values("F7",10);
+
+insert `seat`(`name`,`bus`)values("A1",11);
+insert `seat`(`name`,`bus`)values("A2",11);
+insert `seat`(`name`,`bus`)values("A3",11);
+insert `seat`(`name`,`bus`)values("A4",11);
+insert `seat`(`name`,`bus`)values("A5",11);
+insert `seat`(`name`,`bus`)values("A6",11);
+insert `seat`(`name`,`bus`)values("A7",11);
+insert `seat`(`name`,`bus`)values("B1",11);
+insert `seat`(`name`,`bus`)values("B2",11);
+insert `seat`(`name`,`bus`)values("B3",11);
+insert `seat`(`name`,`bus`)values("B4",11);
+insert `seat`(`name`,`bus`)values("B5",11);
+insert `seat`(`name`,`bus`)values("B6",11);
+insert `seat`(`name`,`bus`)values("B7",11);
+insert `seat`(`name`,`bus`)values("C1",11);
+insert `seat`(`name`,`bus`)values("C2",11);
+insert `seat`(`name`,`bus`)values("C3",11);
+insert `seat`(`name`,`bus`)values("C4",11);
+insert `seat`(`name`,`bus`)values("C5",11);
+insert `seat`(`name`,`bus`)values("C6",11);
+insert `seat`(`name`,`bus`)values("C7",11);
+insert `seat`(`name`,`bus`)values("D1",11);
+insert `seat`(`name`,`bus`)values("D2",11);
+insert `seat`(`name`,`bus`)values("D3",11);
+insert `seat`(`name`,`bus`)values("D4",11);
+insert `seat`(`name`,`bus`)values("D5",11);
+insert `seat`(`name`,`bus`)values("D6",11);
+insert `seat`(`name`,`bus`)values("D7",11);
+insert `seat`(`name`,`bus`)values("E1",11);
+insert `seat`(`name`,`bus`)values("E2",11);
+insert `seat`(`name`,`bus`)values("E3",11);
+insert `seat`(`name`,`bus`)values("E4",11);
+insert `seat`(`name`,`bus`)values("E5",11);
+insert `seat`(`name`,`bus`)values("E6",11);
+insert `seat`(`name`,`bus`)values("E7",11);
+insert `seat`(`name`,`bus`)values("F1",11);
+insert `seat`(`name`,`bus`)values("F2",11);
+insert `seat`(`name`,`bus`)values("F3",11);
+insert `seat`(`name`,`bus`)values("F4",11);
+insert `seat`(`name`,`bus`)values("F5",11);
+insert `seat`(`name`,`bus`)values("F6",11);
+insert `seat`(`name`,`bus`)values("F7",11);
+
+insert `seat`(`name`,`bus`)values("A1",12);
+insert `seat`(`name`,`bus`)values("A2",12);
+insert `seat`(`name`,`bus`)values("A3",12);
+insert `seat`(`name`,`bus`)values("A4",12);
+insert `seat`(`name`,`bus`)values("A5",12);
+insert `seat`(`name`,`bus`)values("A6",12);
+insert `seat`(`name`,`bus`)values("A7",12);
+insert `seat`(`name`,`bus`)values("B1",12);
+insert `seat`(`name`,`bus`)values("B2",12);
+insert `seat`(`name`,`bus`)values("B3",12);
+insert `seat`(`name`,`bus`)values("B4",12);
+insert `seat`(`name`,`bus`)values("B5",12);
+insert `seat`(`name`,`bus`)values("B6",12);
+insert `seat`(`name`,`bus`)values("B7",12);
+insert `seat`(`name`,`bus`)values("C1",12);
+insert `seat`(`name`,`bus`)values("C2",12);
+insert `seat`(`name`,`bus`)values("C3",12);
+insert `seat`(`name`,`bus`)values("C4",12);
+insert `seat`(`name`,`bus`)values("C5",12);
+insert `seat`(`name`,`bus`)values("C6",12);
+insert `seat`(`name`,`bus`)values("C7",12);
+insert `seat`(`name`,`bus`)values("D1",12);
+insert `seat`(`name`,`bus`)values("D2",12);
+insert `seat`(`name`,`bus`)values("D3",12);
+insert `seat`(`name`,`bus`)values("D4",12);
+insert `seat`(`name`,`bus`)values("D5",12);
+insert `seat`(`name`,`bus`)values("D6",12);
+insert `seat`(`name`,`bus`)values("D7",12);
+insert `seat`(`name`,`bus`)values("E1",12);
+insert `seat`(`name`,`bus`)values("E2",12);
+insert `seat`(`name`,`bus`)values("E3",12);
+insert `seat`(`name`,`bus`)values("E4",12);
+insert `seat`(`name`,`bus`)values("E5",12);
+insert `seat`(`name`,`bus`)values("E6",12);
+insert `seat`(`name`,`bus`)values("E7",12);
+insert `seat`(`name`,`bus`)values("F1",12);
+insert `seat`(`name`,`bus`)values("F2",12);
+insert `seat`(`name`,`bus`)values("F3",12);
+insert `seat`(`name`,`bus`)values("F4",12);
+insert `seat`(`name`,`bus`)values("F5",12);
+insert `seat`(`name`,`bus`)values("F6",12);
+insert `seat`(`name`,`bus`)values("F7",12);
+
+
+insert `booking`(user,seat,departure,route,createdDate)
+values(
+	3,
+    1,
+    "2019-08-10 05:00:00",
+    1,
+    "2019-08-10 10:10:10"
+);
+
