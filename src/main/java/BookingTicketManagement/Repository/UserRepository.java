@@ -1,7 +1,10 @@
 package BookingTicketManagement.Repository;
 
 import BookingTicketManagement.Model.User;
+
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -39,6 +42,40 @@ public class UserRepository {
         } catch (Exception e) {}
         return user;
 	}
+
+	public User findByUserNameCP(String userName) {
+        User user = null;
+        System.out.println("Login connection pool....");
+        try {
+            String sqlSelect = "select * from `user` where username=\""+userName+"\"";
+
+            try (Connection con = DataAccessHelper.getConnection();
+                 Statement statement = con.createStatement();
+                 ResultSet rs=statement.executeQuery(sqlSelect);) {
+                Thread.sleep(2000);
+                rs.next();
+                user = new User(
+                        Integer.parseInt(rs.getString("id")),
+                        Integer.parseInt(rs.getString("role")),
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getString("displayname"),
+                        Integer.parseInt(rs.getString("isactive")),
+                        rs.getString("createdDate"),
+                        rs.getString("createdBy"),
+                        rs.getString("updatedDate"),
+                        rs.getString("updatedBy"),
+                        rs.getString("phonenumber"),
+                        rs.getString("address"),
+                        rs.getString("email")
+                );
+            }
+
+        } catch (SQLException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
 
     public boolean save(String username, String password, int role, String displayname, String phonenumber, String address, String email, int createdBy) {
 

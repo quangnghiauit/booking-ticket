@@ -47,6 +47,12 @@ public class DataAccessHelper {
         conn = cpds.getConnection();
         System.out.println("Getting connection successfull .........");
     }
+
+    public static Connection getConnection() throws SQLException {
+        System.out.println("Getting connection pool...... ");
+        Connection conn = cpds.getConnection();
+        return conn;
+    }
     
     public void getClose(){
         
