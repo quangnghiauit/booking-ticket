@@ -1,5 +1,5 @@
 
-package BookingTicketManagement.Config.Authentication;
+package BookingTicketManagement.Config;
 
 import java.io.IOException;
 import javax.servlet.Filter;

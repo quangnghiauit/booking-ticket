@@ -1,5 +1,5 @@
 
-package BookingTicketManagement.Config.Authentication;
+package BookingTicketManagement.Config;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -16,8 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebFilter(filterName = "UserAuthentication", urlPatterns = {"/user/*"})
-public class UserAuthentication implements Filter {
+@WebFilter(filterName = "CustomerAuthentication", urlPatterns = {"/customer/*"})
+public class CustomerAuthentication implements Filter {
+    
     
     @Override
     public void init(FilterConfig arg0) throws ServletException {
@@ -33,7 +34,7 @@ public class UserAuthentication implements Filter {
         try{
             String role = (String) request.getSession(false).getAttribute("role");
 
-            if (role.equals("ADMIN") || role.equals("CUSTOMER") || role.equals("SELLER")) {
+            if (role.equals("CUSTOMER")) {
                 chain.doFilter(req, res);
 
             } else {
@@ -49,5 +50,4 @@ public class UserAuthentication implements Filter {
     public void destroy() {
 
     }
-
 }

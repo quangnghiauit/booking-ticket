@@ -1,10 +1,11 @@
-
-package BookingTicketManagement.Config.Authentication;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package BookingTicketManagement.Config;
 
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -15,11 +16,13 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ *
+ * @author tnd
+ */
+@WebFilter(filterName = "AdminAuthentication", urlPatterns = {"/admin/*"})
+public class AdminAuthentication implements Filter {
 
-@WebFilter(filterName = "CustomerAuthentication", urlPatterns = {"/customer/*"})
-public class CustomerAuthentication implements Filter {
-    
-    
     @Override
     public void init(FilterConfig arg0) throws ServletException {
 
@@ -34,7 +37,7 @@ public class CustomerAuthentication implements Filter {
         try{
             String role = (String) request.getSession(false).getAttribute("role");
 
-            if (role.equals("CUSTOMER")) {
+            if (role.equals("ADMIN")) {
                 chain.doFilter(req, res);
 
             } else {
@@ -50,4 +53,5 @@ public class CustomerAuthentication implements Filter {
     public void destroy() {
 
     }
+
 }

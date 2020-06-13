@@ -1,8 +1,10 @@
 package BookingTicketManagement.Repository;
 
-import BookingTicketManagement.Config.Database.ConnectDatabase;
+import BookingTicketManagement.Constants.DBConfiguration;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+import java.beans.PropertyVetoException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,8 +12,25 @@ import java.util.logging.Logger;
 
 public class DataAccessHelper {
 
-	private String url= "jdbc:mysql://"+ConnectDatabase.host+":"+ConnectDatabase.post+"/"+ConnectDatabase.database+"?user="+ConnectDatabase.user+"&password="+ConnectDatabase.password;
-    
+	private static ComboPooledDataSource cpds = new ComboPooledDataSource();
+
+	static {
+	    try {
+            cpds.setDriverClass(DBConfiguration.DB_DRIVER);
+            cpds.setJdbcUrl(DBConfiguration.CONNECTION_URL);
+            cpds.setUser(DBConfiguration.USER_NAME);
+            cpds.setPassword(DBConfiguration.PASSWORD);
+            cpds.setMinPoolSize(DBConfiguration.DB_MIN_CONNECTIONS);
+            cpds.setInitialPoolSize(DBConfiguration.DB_MIN_CONNECTIONS);
+            cpds.setMaxPoolSize(DBConfiguration.DB_MAX_CONNECTIONS);
+        } catch (PropertyVetoException ex) {
+	        ex.printStackTrace();
+        }
+    }
+
+    public DataAccessHelper() {
+	    super();
+    }
     public Connection conn=null;
     
     private static DataAccessHelper instance=null;
@@ -23,17 +42,11 @@ public class DataAccessHelper {
         return instance;
     }
     
-    private DataAccessHelper(){}
-
     public void getConnect() throws SQLException{
-        
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(url);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DataAccessHelper.class.getName()).log(Level.SEVERE, null, ex);
-        }        
-    } 
+        System.out.println("Getting connection .........");
+        conn = cpds.getConnection();
+        System.out.println("Getting connection successfull .........");
+    }
     
     public void getClose(){
         
