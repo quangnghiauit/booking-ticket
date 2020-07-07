@@ -117,7 +117,7 @@
         <img src="./images/bus2.jpg">
         <div class="carousel-caption">
           <h1 class="display-3">Wherever you want</h1>
-          <a class="btn btn-primary btn-lg" href="#" role="button">Book now</a>
+          <a class="btn btn-primary btn-lg" href="#" role="button">Book now!!!</a>
         </div>
       </div>
       <div class="carousel-item">
