@@ -12,10 +12,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author tnd
- */
 @WebFilter(filterName = "SellerAuthentication", urlPatterns = {"/seller/*"})
 public class SellerAuthentication implements Filter {
     
