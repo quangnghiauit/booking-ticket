@@ -121,7 +121,7 @@
                                 <%@ page import="java.util.ArrayList" %>
                                 <%@ page import="java.util.HashSet" %>
                                 <% ArrayList<Route> listRoute = (ArrayList<Route>) request.getAttribute("listRoute");
-                          HashSet<String> cleanList = new HashSet<>();
+                          HashSet<String> cleanList = new HashSet();
                           
                           for(Route route : listRoute) {
                                cleanList.add(route.getFrom());
