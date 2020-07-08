@@ -14,7 +14,7 @@ public class BusRouteRepository {
         String SQL = "select * from `bus_route` where routeId=\""+route+"\"";
         ArrayList<Bus_Route> list = new ArrayList<>();
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -25,7 +25,7 @@ public class BusRouteRepository {
                         Float.parseFloat(rs.getString("price"))
                 ));
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return list;
     }
@@ -35,7 +35,7 @@ public class BusRouteRepository {
         String SQL = "select * from `bus_route` where busId=\""+bus+"\" and routeId=\""+route+"\"";
         Bus_Route busRoute = null;
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -46,7 +46,7 @@ public class BusRouteRepository {
                         Float.parseFloat(rs.getString("price"))
                 );
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return busRoute;
     }

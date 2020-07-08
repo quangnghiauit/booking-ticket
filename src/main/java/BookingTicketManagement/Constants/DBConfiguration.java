@@ -6,7 +6,7 @@ public class DBConfiguration {
     public static final String DB_NAME = "BOOKINGTICKETMANAGEMENT";
     public static final String DB_PORT = "3306";
     public static final String USER_NAME = "root";
-    public static final String PASSWORD = "123456789";
+    public static final String PASSWORD = "123456";
     public static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
     public static final int DB_MIN_CONNECTIONS = 10;
     public static final int DB_MAX_CONNECTIONS = 30;

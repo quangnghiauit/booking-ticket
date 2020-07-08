@@ -18,7 +18,6 @@ public class UserRepository {
         String SQL = "select * from `user` where username=\""+username+"\"";
         User user = null;
         try{
-            DataAccessHelper.getInstance().getConnect();
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);            
             while(rs.next()) {
@@ -38,7 +37,7 @@ public class UserRepository {
                         rs.getString("email")
                 );
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return user;
 	}
@@ -111,17 +110,17 @@ public class UserRepository {
                     ")"
                 ;
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             int rs=statement.executeUpdate(SQL);
             if(rs>0)
             {
-                DataAccessHelper.getInstance().getClose();
+                
                 return true;
             }
             else
             {
-                DataAccessHelper.getInstance().getClose();
+                
                 return false;
             }
         } catch (Exception e) {return false;}
@@ -143,17 +142,17 @@ public class UserRepository {
                     ;
             
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             int rs=statement.executeUpdate(SQL);
             if(rs>0)
             {
-                DataAccessHelper.getInstance().getClose();
+                
                 return true;
             }
             else
             {
-                DataAccessHelper.getInstance().getClose();
+                
                 return false;
             }
         } catch (Exception e) {return false;}
@@ -164,7 +163,7 @@ public class UserRepository {
         String SQL = "select * from `user` where id=\""+id+"\"";
         User user = null;
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -184,7 +183,7 @@ public class UserRepository {
                         rs.getString("email")
                 );
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return user;
     }
@@ -194,7 +193,7 @@ public class UserRepository {
         String SQL = "select * from `user`";
         ArrayList<User> list = new ArrayList<>();
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -214,7 +213,7 @@ public class UserRepository {
                         rs.getString("email")
                 ));
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return list;
     }
