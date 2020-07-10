@@ -51,7 +51,7 @@ public class UserService {
 
 	public UserDTO getUser(String username) {
 
-		User user = userRepository.findByUserNameCP(username);
+		User user = userRepository.findByUsername(username);
 		Role role = roleRepository.findByID(user.getRoleID());
 		
 		return new UserDTO(
