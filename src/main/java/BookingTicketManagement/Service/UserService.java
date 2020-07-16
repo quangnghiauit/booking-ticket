@@ -30,12 +30,12 @@ public class UserService {
 
 	private UserRepository userRepository = new UserRepository();
 	private RoleRepository roleRepository = new RoleRepository();
-        private TypeRepository typeRepository = new TypeRepository();
-        private RouteRepository routeRepository = new RouteRepository();
-        private BusRepository busRepository = new BusRepository();
-        private SeatRepository seatRepository = new SeatRepository();
-        private BookingRepository bookingRepository = new BookingRepository();
-        private BusRouteRepository busRoundRepository = new BusRouteRepository();
+    private TypeRepository typeRepository = new TypeRepository();
+    private RouteRepository routeRepository = new RouteRepository();
+    private BusRepository busRepository = new BusRepository();
+    private SeatRepository seatRepository = new SeatRepository();
+    private BookingRepository bookingRepository = new BookingRepository();
+    private BusRouteRepository busRoundRepository = new BusRouteRepository();
         
 	public boolean login(String username, String password) {
 		
