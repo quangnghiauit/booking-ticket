@@ -42,10 +42,12 @@ public class GetBusBooking extends HttpServlet {
         Route route = null;
         
         for(Route item : service.getRoutes()) {
-            if(item.getFrom().equals(from) && item.getTo().equals(to) && item.getTimeGo().equals(departureTime)){
+            /*if(item.getFrom().equals(from) && item.getTo().equals(to) && item.getTimeGo().equals(departureTime)){
                 route = item;
                 break;
-            }
+            }*/
+            route = item;
+            break;
         }
         
         if(route == null) {

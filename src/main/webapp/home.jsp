@@ -31,64 +31,63 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <% try{
+    <% try{
             
-    String role = (String)request.getSession().getAttribute("role");
-    if(role.equals("ADMIN"))
-    {
-        out.print("<li class=\"nav-item\">");
-        out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/\">Home</a>");
-        out.print("</li>");
-        out.print("<li class=\"nav-item\">");
-        out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/manage-user\">Manage user</a>");
-        out.print("</li>");
-        out.print("<div class=\"dropdown drd\">");
-        out.print("<button class=\"btn btn-default dropdown-toggle hl\" data-toggle=\"dropdown\">");
-        out.print("<i class=\"fas fa-user-alt\"></i>");
-        out.print(request.getSession().getAttribute("displayname"));
-        out.print("</button>");
-        out.print("<div class=\"dropdown-menu\">");
-        out.print("<a class=\"dropdown-item\" href=\""+request.getContextPath()+"/user/get-info-user\">Profile</a>");
-        out.print("<a class=\"dropdown-item\" onclick='toggleLogout()' href=\"#\">Logout</a>");        
-        
-    }
-    else if(role.equals("CUSTOMER")){
-        out.print("<li class=\"nav-item\">");
-        out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/\">Home</a>");
-        out.print("</li>");
-        out.print("<li class=\"nav-item\">");
-        out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/customer/tick-booked\">My Ticks</a>");
-        out.print("</li>");
-        out.print("<div class=\"dropdown drd\">");
-        out.print("<button class=\"btn btn-default dropdown-toggle hl\" data-toggle=\"dropdown\">");
-        out.print("<i class=\"fas fa-user-alt\"></i>");
-        out.print(request.getSession().getAttribute("displayname"));
-        out.print("</button>");
-        out.print("<div class=\"dropdown-menu\">");
-        out.print("<a class=\"dropdown-item\" href=\""+request.getContextPath()+"/user/get-info-user\">Profile</a>");
-        out.print("<a class=\"dropdown-item\" onclick='toggleLogout()' href=\"#\">Logout</a>");        
+        String role = (String)request.getSession().getAttribute("role");
+        if(role.equals("ADMIN")) {
+            out.print("<li class=\"nav-item\">");
+            out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/\">Home</a>");
+            out.print("</li>");
+            out.print("<li class=\"nav-item\">");
+            out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/manage-user\">Manage user</a>");
+            out.print("</li>");
+            out.print("<div class=\"dropdown drd\">");
+            out.print("<button class=\"btn btn-default dropdown-toggle hl\" data-toggle=\"dropdown\">");
+            out.print("<i class=\"fas fa-user-alt\"></i>");
+            out.print(request.getSession().getAttribute("displayname"));
+            out.print("</button>");
+            out.print("<div class=\"dropdown-menu\">");
+            out.print("<a class=\"dropdown-item\" href=\""+request.getContextPath()+"/user/get-info-user\">Profile</a>");
+            out.print("<a class=\"dropdown-item\" onclick='toggleLogout()' href=\"#\">Logout</a>");
 
-    }
-    else if(role.equals("SELLER")){
-        out.print("<li class=\"nav-item\">");
-        out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/\">Home</a>");
-        out.print("</li>");
-        out.print("<li class=\"nav-item\">");
-        out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/seller/manage-ticket\">Manage tickets</a>");
-        out.print("</li>");
-        out.print("<li class=\"nav-item\">");
-        out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/seller/manage-seat\">Manage seats</a>");
-        out.print("</li>");
-        out.print("<div class=\"dropdown drd\">");
-        out.print("<button class=\"btn btn-default dropdown-toggle hl\" data-toggle=\"dropdown\">");
-        out.print("<i class=\"fas fa-user-alt\"></i>");
-        out.print(request.getSession().getAttribute("displayname"));
-        out.print("</button>");
-        out.print("<div class=\"dropdown-menu\">");
-        out.print("<a class=\"dropdown-item\" href=\""+request.getContextPath()+"/user/get-info-user\">Profile</a>");
-        out.print("<a class=\"dropdown-item\" onclick='toggleLogout()' href=\"#\">Logout</a>");        
+        }
+        else if(role.equals("CUSTOMER")){
+            out.print("<li class=\"nav-item\">");
+            out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/\">Home</a>");
+            out.print("</li>");
+            out.print("<li class=\"nav-item\">");
+            out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/customer/tick-booked\">My Ticks</a>");
+            out.print("</li>");
+            out.print("<div class=\"dropdown drd\">");
+            out.print("<button class=\"btn btn-default dropdown-toggle hl\" data-toggle=\"dropdown\">");
+            out.print("<i class=\"fas fa-user-alt\"></i>");
+            out.print(request.getSession().getAttribute("displayname"));
+            out.print("</button>");
+            out.print("<div class=\"dropdown-menu\">");
+            out.print("<a class=\"dropdown-item\" href=\""+request.getContextPath()+"/user/get-info-user\">Profile</a>");
+            out.print("<a class=\"dropdown-item\" onclick='toggleLogout()' href=\"#\">Logout</a>");
 
-    }
+        }
+        else if(role.equals("SELLER")){
+            out.print("<li class=\"nav-item\">");
+            out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/\">Home</a>");
+            out.print("</li>");
+            out.print("<li class=\"nav-item\">");
+            out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/seller/manage-ticket\">Manage tickets</a>");
+            out.print("</li>");
+            out.print("<li class=\"nav-item\">");
+            out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/seller/manage-seat\">Manage seats</a>");
+            out.print("</li>");
+            out.print("<div class=\"dropdown drd\">");
+            out.print("<button class=\"btn btn-default dropdown-toggle hl\" data-toggle=\"dropdown\">");
+            out.print("<i class=\"fas fa-user-alt\"></i>");
+            out.print(request.getSession().getAttribute("displayname"));
+            out.print("</button>");
+            out.print("<div class=\"dropdown-menu\">");
+            out.print("<a class=\"dropdown-item\" href=\""+request.getContextPath()+"/user/get-info-user\">Profile</a>");
+            out.print("<a class=\"dropdown-item\" onclick='toggleLogout()' href=\"#\">Logout</a>");
+
+        }
     }
     catch(Exception e) {
         out.print("<li class=\"nav-item\">");
