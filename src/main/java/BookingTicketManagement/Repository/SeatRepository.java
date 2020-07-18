@@ -13,7 +13,7 @@ public class SeatRepository {
         String SQL = "select * from `seat` where bus=\""+busId+"\"";
         ArrayList<Seat> list = new ArrayList<>();
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -23,7 +23,7 @@ public class SeatRepository {
                         Integer.parseInt(rs.getString("bus"))
                 ));
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return list;
     }
@@ -33,7 +33,7 @@ public class SeatRepository {
         String SQL = "select * from `seat` where id=\""+id+"\"";
         Seat seat = null;
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -43,7 +43,7 @@ public class SeatRepository {
                         Integer.parseInt(rs.getString("bus"))
                 );
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return seat;
     }
@@ -53,7 +53,7 @@ public class SeatRepository {
          String SQL = "select * from `seat`";
         ArrayList<Seat> list = new ArrayList<>();
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -63,7 +63,7 @@ public class SeatRepository {
                         Integer.parseInt(rs.getString("bus"))
                 ));
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return list;
     }

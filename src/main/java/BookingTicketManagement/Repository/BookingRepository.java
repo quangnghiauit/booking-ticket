@@ -16,7 +16,7 @@ public class BookingRepository {
         String SQL = "select * from `booking` where seat=\""+seatId+"\" and departure=\""+departure+"\"";
         ArrayList<Booking> list = new ArrayList<>();
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -33,7 +33,7 @@ public class BookingRepository {
                         Integer.parseInt(rs.getString("ispaid"))
                 ));
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return list;
     }
@@ -50,17 +50,17 @@ public class BookingRepository {
                     "\""+ (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(createdDate) +"\" " +
                     ")";
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             int rs=statement.executeUpdate(SQL);
             if(rs>0)
             {
-                DataAccessHelper.getInstance().getClose();
+                
                 return true;
             }
             else
             {
-                DataAccessHelper.getInstance().getClose();
+                
                 return false;
             }
         } catch (Exception e) {return false;}
@@ -71,7 +71,7 @@ public class BookingRepository {
         String SQL = "select * from `booking` where user=\""+id+"\"";
         ArrayList<Booking> list = new ArrayList<>();
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -88,7 +88,7 @@ public class BookingRepository {
                         Integer.parseInt(rs.getString("ispaid"))
                 ));
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return list;
     }
@@ -98,7 +98,7 @@ public class BookingRepository {
         String SQL = "select * from `booking` where id=\""+id+"\"";
         Booking booing = null;
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -115,7 +115,7 @@ public class BookingRepository {
                         Integer.parseInt(rs.getString("ispaid"))
                 );
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return booing;
     }
@@ -131,17 +131,17 @@ public class BookingRepository {
                     ;
             
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             int rs=statement.executeUpdate(SQL);
             if(rs>0)
             {
-                DataAccessHelper.getInstance().getClose();
+                
                 return true;
             }
             else
             {
-                DataAccessHelper.getInstance().getClose();
+                
                 return false;
             }
         } catch (Exception e) {return false;}
@@ -152,7 +152,7 @@ public class BookingRepository {
         String SQL = "select * from `booking`";
         ArrayList<Booking> list = new ArrayList<>();
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -169,7 +169,7 @@ public class BookingRepository {
                         Integer.parseInt(rs.getString("ispaid"))
                 ));
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return list;
     }
@@ -185,17 +185,17 @@ public class BookingRepository {
                     ;
             
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             int rs=statement.executeUpdate(SQL);
             if(rs>0)
             {
-                DataAccessHelper.getInstance().getClose();
+                
                 return true;
             }
             else
             {
-                DataAccessHelper.getInstance().getClose();
+                
                 return false;
             }
         } catch (Exception e) {return false;}

@@ -16,10 +16,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author tnd
- */
 @WebFilter(filterName = "AdminAuthentication", urlPatterns = {"/admin/*"})
 public class AdminAuthentication implements Filter {
 

@@ -145,7 +145,7 @@ public final class manageTicket_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                        \r\n");
       out.write("                        ");
  ArrayList<Route> listRoute = (ArrayList<Route>) request.getAttribute("routes");
-                          HashSet<String> cleanList = new HashSet<>();
+                          HashSet<String> cleanList = new HashSet();
                           for(Route route : listRoute) {
                                cleanList.add(route.getFrom());
                              }

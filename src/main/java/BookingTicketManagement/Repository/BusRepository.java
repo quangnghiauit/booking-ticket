@@ -11,7 +11,7 @@ public class BusRepository {
         String SQL = "select * from `bus` where id=\""+id+"\"";
         Bus bus = null;
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -21,7 +21,7 @@ public class BusRepository {
                         Integer.parseInt(rs.getString("type"))
                 );
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return bus;
     }

@@ -12,7 +12,7 @@ public class RoleRepository {
 		String SQL = "select * from `role` where id=\""+id+"\"";
         Role role = null;
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -21,7 +21,7 @@ public class RoleRepository {
                     rs.getString("role")
                 );
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return role;
 	}
@@ -31,7 +31,7 @@ public class RoleRepository {
         String SQL = "select * from `role` where role=\""+roleName+"\"";
         Role role = null;
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -40,7 +40,7 @@ public class RoleRepository {
                     rs.getString("role")
                 );
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return role;
     }
@@ -50,7 +50,7 @@ public class RoleRepository {
         String SQL = "select * from `role`";
         ArrayList<Role> list = new ArrayList<>();
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -59,7 +59,7 @@ public class RoleRepository {
                         rs.getString("role")
                 ));
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return list;
     }

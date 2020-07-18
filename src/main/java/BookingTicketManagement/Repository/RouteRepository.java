@@ -14,7 +14,7 @@ public class RouteRepository {
         String SQL = "select * from `route`";
         ArrayList<Route> list = new ArrayList<>();
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -26,7 +26,7 @@ public class RouteRepository {
                         rs.getString("duration")
                 ));
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return list;
     }
@@ -36,7 +36,7 @@ public class RouteRepository {
         String SQL = "select * from `route` where id=\""+id+"\"";
         Route route = null;
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -48,7 +48,7 @@ public class RouteRepository {
                         rs.getString("duration")
                 );
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return route;
     }
@@ -58,7 +58,7 @@ public class RouteRepository {
         String SQL = "select * from `route` where `from`=\""+from+"\" and `to`=\""+to+"\" and `timeGo`=\""+departureTime+"\"";
         Route route=null;
         try{
-            DataAccessHelper.getInstance().getConnect();
+            
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
@@ -70,7 +70,7 @@ public class RouteRepository {
                         rs.getString("duration")
                 );
             }
-            DataAccessHelper.getInstance().getClose();
+            
         } catch (Exception e) {}
         return route;
     }

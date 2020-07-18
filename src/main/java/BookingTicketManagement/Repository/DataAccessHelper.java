@@ -28,25 +28,22 @@ public class DataAccessHelper {
         }
     }
 
-    public DataAccessHelper() {
-	    super();
-    }
-    public Connection conn=null;
-    
-    private static DataAccessHelper instance=null;
-    
-    public static DataAccessHelper getInstance()
-    {
-        if(instance==null)
-            instance=new DataAccessHelper();
-        return instance;
-    }
-    
-    public void getConnect() throws SQLException{
+    public DataAccessHelper() throws SQLException {
         System.out.println("Getting connection .........");
         conn = cpds.getConnection();
         System.out.println("Getting connection successfull .........");
     }
+    public Connection conn=null;
+
+    public static DataAccessHelper getInstance() throws SQLException {
+        return new DataAccessHelper();
+    }
+    
+//    public void getConnect() throws SQLException{
+//        System.out.println("Getting connection .........");
+//        conn = cpds.getConnection();
+//        System.out.println("Getting connection successfull .........");
+//    }
 
     public static Connection getConnection() throws SQLException {
         System.out.println("Getting connection pool...... ");
@@ -55,7 +52,6 @@ public class DataAccessHelper {
     }
     
     public void getClose(){
-        
         try {
             conn.close();
         } catch (SQLException ex) {
