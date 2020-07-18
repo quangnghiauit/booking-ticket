@@ -186,7 +186,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <img src=\"./images/bus2.jpg\">\r\n");
       out.write("        <div class=\"carousel-caption\">\r\n");
       out.write("          <h1 class=\"display-3\">Wherever you want</h1>\r\n");
-      out.write("          <a class=\"btn btn-primary btn-lg\" href=\"#\" role=\"button\">Book now</a>\r\n");
+      out.write("          <a class=\"btn btn-primary btn-lg\" href=\"#\" role=\"button\">Book now!!!</a>\r\n");
       out.write("        </div>\r\n");
       out.write("      </div>\r\n");
       out.write("      <div class=\"carousel-item\">\r\n");
@@ -212,7 +212,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  <div class=\"container-fluid padding\">\r\n");
       out.write("    <div class=\"row welcom text-center\">\r\n");
       out.write("      <div class=\"col-12\">\r\n");
-      out.write("        <h1 class=\"display-4\">Know where you're going? Book</h1>\r\n");
+      out.write("        <h1 class=\"display-4\">Where are you going? Book now!</h1>\r\n");
       out.write("        <br>\r\n");
       out.write("      </div>\r\n");
       out.write("    </div>\r\n");
@@ -319,7 +319,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  </div>\r\n");
       out.write("  <hr class=\"hrb\">\r\n");
       out.write("  <div class=\"Des col-12 text-center\">\r\n");
-      out.write("    <h1>Destinations</h1>\r\n");
+      out.write("    <h1>Location</h1>\r\n");
       out.write("  </div>\r\n");
       out.write("  <div class=\"container-fluid padding\">\r\n");
       out.write("    <div class=\"ides row padding\">\r\n");
@@ -436,7 +436,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  <!-- Footer -->\r\n");
       out.write("  <footer>\r\n");
       out.write("    <div class=\"container-fluid padding ft\">\r\n");
-      out.write("      <div class=\"row text-center\">\r\n");
+      out.write("      <div class=\"row text-center\" style=\"padding-top: 40px\">\r\n");
       out.write("        <div class=\"social col-md-6\">\r\n");
       out.write("          <h1>Contact us</h1>\r\n");
       out.write("          <p>24 Hours Service Support</p>\r\n");

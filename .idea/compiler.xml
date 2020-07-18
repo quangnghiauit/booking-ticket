@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="BookingTicketManagement" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />
+      <module name="BookingTicketManagement" options="-endorseddirs &quot;D:\Github projects\booking-ticket\target/endorsed&quot;" />
     </option>
   </component>
 </project>

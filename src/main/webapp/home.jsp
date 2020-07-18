@@ -117,7 +117,7 @@
         <img src="./images/bus2.jpg">
         <div class="carousel-caption">
           <h1 class="display-3">Wherever you want</h1>
-          <a class="btn btn-primary btn-lg" href="#" role="button">Book now</a>
+          <a class="btn btn-primary btn-lg" href="#" role="button">Book now!!!</a>
         </div>
       </div>
       <div class="carousel-item">
@@ -143,7 +143,7 @@
   <div class="container-fluid padding">
     <div class="row welcom text-center">
       <div class="col-12">
-        <h1 class="display-4">Know where you're going? Book</h1>
+        <h1 class="display-4">Where are you going? Book now!</h1>
         <br>
       </div>
     </div>
@@ -240,7 +240,7 @@
   </div>
   <hr class="hrb">
   <div class="Des col-12 text-center">
-    <h1>Destinations</h1>
+    <h1>Location</h1>
   </div>
   <div class="container-fluid padding">
     <div class="ides row padding">
@@ -357,7 +357,7 @@
   <!-- Footer -->
   <footer>
     <div class="container-fluid padding ft">
-      <div class="row text-center">
+      <div class="row text-center" style="padding-top: 40px">
         <div class="social col-md-6">
           <h1>Contact us</h1>
           <p>24 Hours Service Support</p>
