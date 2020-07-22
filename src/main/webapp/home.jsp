@@ -91,7 +91,7 @@
     }
     catch(Exception e) {
         out.print("<li class=\"nav-item\">");
-        out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/\">Home</a>");
+        out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/\">About us</a>");
         out.print("</li>");
         out.print("<li class=\"nav-item\">");
         out.print("<a class=\"nav-link\" href=\""+request.getContextPath()+"/login\">Sign in</a>");
