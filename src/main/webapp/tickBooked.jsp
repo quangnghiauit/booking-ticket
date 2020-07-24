@@ -3,7 +3,8 @@
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Booked Ticket</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
@@ -19,6 +20,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
     integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel='stylesheet' type='text/css' media='screen' href='../css/HistoryCus.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/style.css'>
 </head>
 
 <body>
@@ -34,9 +36,9 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
               <%
-                    out.print("<li class=\"nav-item\">");
-                    out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/\">Home</a>");
-                    out.print("</li>");
+                  out.print("<li class=\"nav-item\">");
+                  out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/aboutUs\">About us</a>");
+                  out.print("</li>");
                     out.print("<li class=\"nav-item\">");
                     out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/customer/tick-booked\">My Ticks</a>");
                     out.print("</li>");
@@ -96,7 +98,7 @@
                         out.println("<td>"+booking.getCreatedDate()+"</td>");
                         out.println("<td>");
                         if(booking.getIspaid()==1)
-                            out.println("<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#updateModel\" disabled>Paied</button>");
+                            out.println("<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#updateModel\" disabled>Paid</button>");
                         else
                             out.println("<button onclick=\"togglePay('"+booking.getId()+"')\" class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#updateModel\">Pay</button>");
                         out.println("</td>");
@@ -112,19 +114,50 @@
       </tbody>
     </table>
   </div>
-  <form id='form' action="${pageContext.request.contextPath}/customer/cancel-booking" method="post" style="display: none">
-    <input type="text" name="id" id='booking' name='id' class="form-control">
+
+  <!-- Footer -->
+  <footer>
+      <div class="container-fluid padding ft">
+          <div class="row text-center" style="padding-top: 40px">
+              <div class="social col-md-6">
+                  <h1>Contact us</h1>
+                  <p>24 Hours Service Support</p>
+                  <a href="#"><i class="fab fa-facebook"></i>
+                      <i class="fab fa-youtube"></i>
+                      <i class="fab fa-instagram"></i>
+                      <i class="fab fa-google-plus-g"></i>
+                  </a>
+              </div>
+              <div class="service col-md-6">
+                  <h1>About us</h1>
+                  <img src="./images/logo4.png">
+              </div>
+          </div>
+      </div>
+  </footer>
+
+  <form id='cancelForm' action="${pageContext.request.contextPath}/customer/cancel-booking" method="post" style="display: none">
+    <input type="text" name="id" id='cancelBookingId' name='id' class="form-control">
     <button type='submit' id='submitCancel'></button>
+  </form>
+  <form id='payForm' action="${pageContext.request.contextPath}/customer/pay-booking" method="post" style="display: none">
+    <input type="text" name="id" id='payBookingId' name='id' class="form-control">
+    <button type='submit' id='submitPay'></button>
   </form>
     
     <form id='formLogout' action="${pageContext.request.contextPath}/logout" method="post" style="display: none;">
   
   </form>
   <script>
-    function toggleCancel(id) {
-      document.getElementById('booking').value=id;
-      document.getElementById('form').submit();
-    }
+      function togglePay(id) {
+          document.getElementById('payBookingId').value=id;
+          document.getElementById('payForm').submit();
+      }
+
+      function toggleCancel(id) {
+          document.getElementById('cancelBookingId').value=id;
+          document.getElementById('cancelForm').submit();
+      }
 
     function toggleSearch() {
       let td, txtValue, display;

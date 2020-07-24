@@ -39,7 +39,7 @@ public class UserService {
         
 	public boolean login(String username, String password) {
 		
-		User user = userRepository.findByUsername(username);
+		User user = userRepository.findByUserNameCP(username);
 		if(user == null)
 			return false;
 		
@@ -96,17 +96,18 @@ public class UserService {
     }
 
     public ArrayList<Type> getTypes() {
-
-        return typeRepository.findAll();
+        return typeRepository.findAllCP();
     }
 
     public ArrayList<Route> getRoutes() {
 
-        return routeRepository.findAll();
+        //return routeRepository.findAll();
+        return routeRepository.findAllCP(); //connection pool here
     }
 
 
     public ArrayList<BusDTO> getBus(String departure, int route, int type) throws ParseException {
+        System.out.println("Start get bus service....");
 
         ArrayList<Bus_Route> listBusRoute = busRoundRepository.findByRouteId(route);
         
@@ -114,7 +115,7 @@ public class UserService {
         
         for(Bus_Route busRoute : listBusRoute) {
             
-            Bus bus = busRepository.findById(busRoute.getBusId());
+            Bus bus = busRepository.findByIdCP(busRoute.getBusId()); //connection pool here
             Type typeBus = typeRepository.findById(bus.getType());
             Route routeBus = routeRepository.findById(busRoute.getRoundId());
             ArrayList<Seat> listSeat = seatRepository.findByBusId(bus.getId());
@@ -151,13 +152,15 @@ public class UserService {
                     busRoute.getPrice()
                 ));
         }
-        
+        System.out.println("End get bus service....");
+
         return list;
     }
 
     public ArrayList<SeatDTO> getSeat(int busId, String departure, int route) {
+        System.out.println("Start get seat service....");
 
-        Bus bus = busRepository.findById(busId);
+        Bus bus = busRepository.findByIdCP(busId); // connection pool here
         
         Type type = typeRepository.findById(bus.getType());
         
@@ -166,8 +169,10 @@ public class UserService {
         ArrayList<SeatDTO> list = new ArrayList<>();
         
         for(Seat seat : listSeat) {
-                        
-            ArrayList<Booking> listBooking = bookingRepository.find(seat.getId(),departure);
+            if (list.size() == 4) return list;
+
+            System.out.println("Start find " + list.size() + " seats");
+            ArrayList<Booking> listBooking = bookingRepository.findCP(seat.getId(),departure);
             
             boolean status = true;
             for( Booking book : listBooking) {
@@ -176,7 +181,7 @@ public class UserService {
                     break;
                 }
             }
-            
+
             list.add(new SeatDTO(
                     seat.getId(),
                     seat.getName(),
@@ -186,11 +191,9 @@ public class UserService {
                     bus.getName(),
                     type.getName()
             ));
+            System.out.println("End Find " + list.size() + " seats");
         }
-        
+        System.out.println("End get seat service....");
         return list;
     }
-
-
-
 }

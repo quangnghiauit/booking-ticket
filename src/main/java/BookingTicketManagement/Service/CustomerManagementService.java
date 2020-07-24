@@ -40,29 +40,32 @@ public class CustomerManagementService {
 
 
     public boolean bookingTicket(String username, int seatId, int route, String departureTime) {
-        
-        User user = userRepository.findByUsername(username);
+        System.out.println("Start booking ticket service....");
+
+        User user = userRepository.findByUserNameCP(username);
         if(user == null)
             return false;
-        
+        System.out.println("End booking ticket service....");
+
         return bookingRepository.save(user.getId(), seatId, route, departureTime); 
     }
 
     public ArrayList<BookingDTO> getBookings(String username) {
+        System.out.println("Start get ticket booked service....");
 
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUserNameCP(username);
         
-        ArrayList<Booking> bookings = bookingRepository.findByUserId(user.getId());
+        ArrayList<Booking> bookings = bookingRepository.findByUserIdCP(user.getId());
         
         ArrayList<BookingDTO> listBooking = new ArrayList<>();
                 
         for(Booking booking : bookings) {
             
-            Seat seat = seatRepository.findById(booking.getSeat());
-            Bus bus = busRepository.findById(seat.getBus());
-            Type type = typeRepository.findById(bus.getType());
-            Route route = routeRepository.findById(booking.getRoute());
-            Bus_Route busRoute = busRouteRepository.find(seat.getBus(),route.getId());
+            Seat seat = seatRepository.findByIdCP(booking.getSeat());
+            Bus bus = busRepository.findByIdCP(seat.getBus());
+            Type type = typeRepository.findByIdCP(bus.getType());
+            Route route = routeRepository.findByIdCP(booking.getRoute());
+            Bus_Route busRoute = busRouteRepository.findCP(seat.getBus(),route.getId());
             
             listBooking.add(new BookingDTO(
                     booking.getId(),
@@ -83,25 +86,50 @@ public class CustomerManagementService {
                     booking.getIspaid()
             ));
         }
+        System.out.println("End get ticket booked service....");
+
         return listBooking;
     }
 
-    public boolean cancelBooking(int id, String username) throws ParseException {
+    public boolean payBooking(int id, String username) throws ParseException {
+        System.out.println("Start cancel booking service....");
 
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUserNameCP(username);
         
-        Booking booking = bookingRepository.findById(id);
+        Booking booking = bookingRepository.findByIdCP(id);
         
         Date createdDate = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).parse(booking.getCreatedDate());
         Date now = new Date();
         
-        Calendar calendar = Calendar.getInstance();
+        /*Calendar calendar = Calendar.getInstance();
         calendar.setTime(createdDate);
         calendar.add(Calendar.HOUR, 24);
         if(calendar.getTime().before(now)) {
             return false;
-        }
-        
-        return bookingRepository.update(id,user.getId());
+        }*/
+        System.out.println("End cancel booking service....");
+
+        return bookingRepository.payBookingCP(id,user.getId());
+    }
+
+    public boolean cancelBooking(int id, String username) throws ParseException {
+        System.out.println("Start cancel booking service....");
+
+        User user = userRepository.findByUserNameCP(username);
+
+        Booking booking = bookingRepository.findByIdCP(id);
+
+        Date createdDate = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).parse(booking.getCreatedDate());
+        Date now = new Date();
+
+        /*Calendar calendar = Calendar.getInstance();
+        calendar.setTime(createdDate);
+        calendar.add(Calendar.HOUR, 24);
+        if(calendar.getTime().before(now)) {
+            return false;
+        }*/
+        System.out.println("End cancel booking service....");
+
+        return bookingRepository.updateCP(id,user.getId());
     }
 }

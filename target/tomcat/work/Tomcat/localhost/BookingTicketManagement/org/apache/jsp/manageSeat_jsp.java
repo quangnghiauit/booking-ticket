@@ -53,7 +53,6 @@ public final class manageSeat_jsp extends org.apache.jasper.runtime.HttpJspBase
     javax.servlet.jsp.JspWriter _jspx_out = null;
     javax.servlet.jsp.PageContext _jspx_page_context = null;
 
-
     try {
       response.setContentType("text/html;charset=UTF-8");
       pageContext = _jspxFactory.getPageContext(this, request, response,
