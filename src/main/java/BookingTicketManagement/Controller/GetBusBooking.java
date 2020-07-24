@@ -29,6 +29,7 @@ public class GetBusBooking extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Start get bus booking controller....");
 
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
@@ -71,11 +72,11 @@ public class GetBusBooking extends HttpServlet {
         
         HashMap<Integer, ArrayList<SeatDTO>> listSeatByBusId = new HashMap<>();
         
-        for(BusDTO bus : listBus) {
+        /*for(BusDTO bus : listBus) {
             
             ArrayList<SeatDTO> listSeat = service.getSeat(bus.getId(),bus.getDepartureTime(),route.getId());
             listSeatByBusId.put(bus.getId(), listSeat);
-        }
+        }*/
         
         ArrayList<Type> types = service.getTypes();
         ArrayList<Route> listRoute = service.getRoutes();
@@ -88,5 +89,6 @@ public class GetBusBooking extends HttpServlet {
         request.setAttribute("listSeatByBusId", listSeatByBusId);
                 
         request.getRequestDispatcher("/bookingBus.jsp").forward(request, response);
+        System.out.println("End get bus booking controller....");
     }
 }

@@ -27,6 +27,7 @@ public class BookingTicket extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Start booking ticket controller....");
 
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
@@ -39,9 +40,8 @@ public class BookingTicket extends HttpServlet {
         for(String seatId : listSeat) {
             service.bookingTicket(username,Integer.parseInt(seatId),route,departureTime);
         }
-        
+        System.out.println("End booking ticket controller....");
+
         response.sendRedirect(request.getContextPath() + "/customer/tick-booked");
     }
-
-    
 }

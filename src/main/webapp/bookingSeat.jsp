@@ -178,28 +178,28 @@
 						<form action="${pageContext.request.contextPath}/customer/booking-ticket" method="post">
 							<div class="form-row">
 								<div class="form-group col-md-3">
-									<label for="busid">Bus</label> <input type="text"
+									<label>Bus</label> <input type="text"
 										class="form-control" value="<%=busName%>" placeholder="BusID">
 								</div>
 								<div class="form-group col-md-3">
-									<label for="seat">Seat</label> <input name="listSeat"
+									<label>Seat</label> <input name="listSeat"
 										type="text" id="seat" class="form-control" min="1" max="5"
 										required>
 								</div>
 								<div class="form-group col-md-6">
-									<label for="departuretime">Departure time</label> <input
+									<label>Departure time</label> <input
 										name="departureTime" type="text" class="form-control"
 										value="<%=departureTime%>" placeholder="Departure time">
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="departure">From</label> <input type="text"
+									<label>From</label> <input type="text"
 										class="form-control" value="<%=route.getFrom()%>"
 										placeholder="Departure">
 								</div>
 								<div class="form-group col-md-6">
-									<label for="arrival">To</label> <input type="text"
+									<label>To</label> <input type="text"
 										class="form-control" value="<%=route.getTo()%>"
 										placeholder="Arrival">
 								</div>

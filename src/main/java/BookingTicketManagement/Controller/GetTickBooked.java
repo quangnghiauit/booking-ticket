@@ -24,6 +24,7 @@ public class GetTickBooked extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Start get ticket booked controller....");
 
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
@@ -32,7 +33,9 @@ public class GetTickBooked extends HttpServlet {
         ArrayList<BookingDTO> listBooking = service.getBookings(user);
         
         request.setAttribute("listBooking", listBooking);
-        
+
+        System.out.println("End get ticket booked controller....");
+
         request.getRequestDispatcher("/tickBooked.jsp").forward(request, response);
     }
     

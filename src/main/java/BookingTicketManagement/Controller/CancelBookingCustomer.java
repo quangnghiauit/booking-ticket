@@ -26,6 +26,7 @@ public class CancelBookingCustomer extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Start cancel booking controller....");
 
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
@@ -38,8 +39,8 @@ public class CancelBookingCustomer extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(CancelBookingCustomer.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("End cancel booking controller....");
+
         response.sendRedirect(request.getContextPath() + "/customer/tick-booked");
     }
-
-    
 }

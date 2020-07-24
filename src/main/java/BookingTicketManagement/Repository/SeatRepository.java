@@ -2,7 +2,11 @@ package BookingTicketManagement.Repository;
 
 import BookingTicketManagement.Model.Seat;
 import BookingTicketManagement.Model.SeatDTO;
+import BookingTicketManagement.Model.User;
+
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -47,6 +51,32 @@ public class SeatRepository {
         } catch (Exception e) {}
         return seat;
     }
+
+
+    public Seat findByIdCP(int id) {
+        Seat seat = null;
+        System.out.println("Login connection pool....");
+        try {
+            String sqlSelect = "select * from `seat` where id=\""+id+"\"";
+
+            try (Connection con = DataAccessHelper.getConnection();
+                 Statement statement = con.createStatement();
+                 ResultSet rs=statement.executeQuery(sqlSelect);) {
+                Thread.sleep(2000);
+                rs.next();
+                seat = new Seat(
+                        Integer.parseInt(rs.getString("id")),
+                        rs.getString("name"),
+                        Integer.parseInt(rs.getString("bus"))
+                );
+            }
+
+        } catch (SQLException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return seat;
+    }
+
 
     public ArrayList<Seat> findAll() {
 

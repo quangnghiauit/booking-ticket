@@ -26,6 +26,7 @@ public class GetSeatBooking extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Start get seat booking controller....");
 
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
@@ -43,14 +44,16 @@ public class GetSeatBooking extends HttpServlet {
                 route = item;
                 break;
             }
+            /*route = item;
+            break;*/
         }
+
         if(route == null)
         {
             response.getWriter().println("Route null");
             return;
         }
-        
-        
+
         request.setAttribute("busName", busName);
         request.setAttribute("price", price);
         request.setAttribute("listSeat", listSeat);
@@ -58,5 +61,6 @@ public class GetSeatBooking extends HttpServlet {
         request.setAttribute("departureTime", departureTime);
 
         request.getRequestDispatcher("/bookingSeat.jsp").forward(request, response);
+        System.out.println("End get seat booking controller....");
     }
 }
