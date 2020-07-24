@@ -22,6 +22,7 @@ BookingTicketManagement\Controller\UpdateInfoUser.class
 BookingTicketManagement\Config\SellerAuthentication.class
 BookingTicketManagement\Repository\BusRepository.class
 BookingTicketManagement\Controller\CancelBookingSeller.class
+BookingTicketManagement\Controller\PayBookingCustomer.class
 BookingTicketManagement\Controller\ManageSeat.class
 BookingTicketManagement\Config\UserAuthentication.class
 BookingTicketManagement\Controller\CancelSeat.class

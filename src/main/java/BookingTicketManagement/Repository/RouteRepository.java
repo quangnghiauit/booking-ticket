@@ -37,6 +37,7 @@ public class RouteRepository {
 
     public ArrayList<Route> findAllCP() {
         ArrayList<Route> list = new ArrayList<>();
+        System.out.println("Start get route repo....");
         System.out.println("Login connection pool....");
         try {
             String sqlSelect = "select * from `route`";
@@ -59,6 +60,8 @@ public class RouteRepository {
         } catch (SQLException | InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println("End get route repo....");
+
         return list;
     }
 
@@ -94,7 +97,7 @@ public class RouteRepository {
             try (Connection con = DataAccessHelper.getConnection();
                  Statement statement = con.createStatement();
                  ResultSet rs=statement.executeQuery(sqlSelect);) {
-                Thread.sleep(2000);
+                //Thread.sleep(2000);
                 rs.next();
                 route = new Route(
                         Integer.parseInt(rs.getString("id")),
@@ -105,7 +108,7 @@ public class RouteRepository {
                 );
             }
 
-        } catch (SQLException | InterruptedException e) {
+        } catch (SQLException e) {// | InterruptedException e) {
             e.printStackTrace();
         }
         return route;

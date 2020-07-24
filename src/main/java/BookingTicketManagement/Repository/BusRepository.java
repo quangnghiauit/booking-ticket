@@ -39,7 +39,7 @@ public class BusRepository {
             try (Connection con = DataAccessHelper.getConnection();
                  Statement statement = con.createStatement();
                  ResultSet rs=statement.executeQuery(sqlSelect);) {
-                Thread.sleep(2000);
+                //Thread.sleep(2000);
                 rs.next();
                 bus = new Bus(
                         Integer.parseInt(rs.getString("id")),
@@ -48,7 +48,7 @@ public class BusRepository {
                 );
             }
 
-        } catch (SQLException | InterruptedException e) {
+        } catch (SQLException e){// | InterruptedException e) {
             e.printStackTrace();
         }
         return bus;

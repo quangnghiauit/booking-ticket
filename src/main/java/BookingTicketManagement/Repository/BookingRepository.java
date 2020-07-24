@@ -52,7 +52,7 @@ public class BookingRepository {
             try (Connection con = DataAccessHelper.getConnection();
                  Statement statement = con.createStatement();
                  ResultSet rs=statement.executeQuery(SQL);) {
-                Thread.sleep(2000);
+                //Thread.sleep(2000);
                 rs.next();
                 while (rs.next()) {
                     list.add(new Booking(
@@ -69,7 +69,7 @@ public class BookingRepository {
                     ));
                 }
             }
-        } catch (SQLException | InterruptedException e) {
+        } catch (SQLException e) {// | InterruptedException e) {
             e.printStackTrace();
         }
         return list;
@@ -140,7 +140,7 @@ public class BookingRepository {
             try (Connection con = DataAccessHelper.getConnection();
                  Statement statement = con.createStatement();
                  ResultSet rs=statement.executeQuery(sqlSelect);) {
-                Thread.sleep(2000);
+                //Thread.sleep(2000);
                 while(rs.next()) {
                     list.add(new Booking(
                             Integer.parseInt(rs.getString("id")),
@@ -157,7 +157,7 @@ public class BookingRepository {
                 }
             }
 
-        } catch (SQLException | InterruptedException e) {
+        } catch (SQLException e){// | InterruptedException e) {
             e.printStackTrace();
         }
         return list;
@@ -198,7 +198,7 @@ public class BookingRepository {
             try (Connection con = DataAccessHelper.getConnection();
                  Statement statement = con.createStatement();
                  ResultSet rs=statement.executeQuery(sqlSelect);) {
-                Thread.sleep(2000);
+                //Thread.sleep(2000);
                 rs.next();
                 booking = new Booking(
                         Integer.parseInt(rs.getString("id")),
@@ -214,7 +214,7 @@ public class BookingRepository {
                 );
             }
 
-        } catch (SQLException | InterruptedException e) {
+        } catch (SQLException e){// | InterruptedException e) {
             e.printStackTrace();
         }
         return booking;
@@ -261,8 +261,34 @@ public class BookingRepository {
                 "where `id`=\"" + id + "\""
                 ;
 
-        try{
-            Statement statement =DataAccessHelper.getConnection().createStatement();
+        try
+            (Statement statement =DataAccessHelper.getConnection().createStatement();){
+            int rs=statement.executeUpdate(SQL);
+            if(rs>0)
+            {
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
+        } catch (Exception e) {return false;}
+    }
+
+    public boolean payBookingCP(int id, int updatedBy) {
+        System.out.println("Login connection pool....");
+
+        Date updatedDate = new Date();
+        String SQL="update `booking` set "+
+                "ispaid=\""+ 1 +"\"," +
+                "updatedDate=\""+ (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(updatedDate) +"\","+
+                "updatedBy=\""+ updatedBy +"\"" +
+                "where `id`=\"" + id + "\""
+                ;
+
+        try
+                (Statement statement =DataAccessHelper.getConnection().createStatement();){
             int rs=statement.executeUpdate(SQL);
             if(rs>0)
             {

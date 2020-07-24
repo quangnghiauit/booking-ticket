@@ -220,7 +220,7 @@
     </div>
    <form id='formPay' action="${pageContext.request.contextPath}/seller/pay-booking" method="post" style="display: none">
     <input type="text" name="id" id='bookingPay' name='id' class="form-control">
-    <button type='submit' id='submitCancel'></button>
+    <button type='submit' id='submitPay'></button>
     </form>
     
     <form id='formCancel' action="${pageContext.request.contextPath}/seller/cancel-booking" method="post" style="display: none">

@@ -3,7 +3,8 @@
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iTravel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
@@ -36,7 +37,7 @@
         String role = (String)request.getSession().getAttribute("role");
         if(role.equals("ADMIN")) {
             out.print("<li class=\"nav-item\">");
-            out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/\">Home</a>");
+            out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/aboutUs\">About us</a>");
             out.print("</li>");
             out.print("<li class=\"nav-item\">");
             out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/manage-user\">Manage user</a>");
@@ -53,7 +54,7 @@
         }
         else if(role.equals("CUSTOMER")){
             out.print("<li class=\"nav-item\">");
-            out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/\">Home</a>");
+            out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/aboutUs\">About us</a>");
             out.print("</li>");
             out.print("<li class=\"nav-item\">");
             out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/customer/tick-booked\">My Ticks</a>");
@@ -70,7 +71,7 @@
         }
         else if(role.equals("SELLER")){
             out.print("<li class=\"nav-item\">");
-            out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/\">Home</a>");
+            out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/aboutUs\">About us</a>");
             out.print("</li>");
             out.print("<li class=\"nav-item\">");
             out.print("<a class=\"nav-link active\" href=\""+request.getContextPath()+"/seller/manage-ticket\">Manage tickets</a>");

@@ -62,7 +62,7 @@ public class SeatRepository {
             try (Connection con = DataAccessHelper.getConnection();
                  Statement statement = con.createStatement();
                  ResultSet rs=statement.executeQuery(sqlSelect);) {
-                Thread.sleep(2000);
+                //Thread.sleep(2000);
                 rs.next();
                 seat = new Seat(
                         Integer.parseInt(rs.getString("id")),
@@ -71,7 +71,7 @@ public class SeatRepository {
                 );
             }
 
-        } catch (SQLException | InterruptedException e) {
+        } catch (SQLException e){// | InterruptedException e) {
             e.printStackTrace();
         }
         return seat;

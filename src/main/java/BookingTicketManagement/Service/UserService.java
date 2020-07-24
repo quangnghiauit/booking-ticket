@@ -96,8 +96,7 @@ public class UserService {
     }
 
     public ArrayList<Type> getTypes() {
-
-        return typeRepository.findAll();
+        return typeRepository.findAllCP();
     }
 
     public ArrayList<Route> getRoutes() {
@@ -108,6 +107,7 @@ public class UserService {
 
 
     public ArrayList<BusDTO> getBus(String departure, int route, int type) throws ParseException {
+        System.out.println("Start get bus service....");
 
         ArrayList<Bus_Route> listBusRoute = busRoundRepository.findByRouteId(route);
         
@@ -152,7 +152,8 @@ public class UserService {
                     busRoute.getPrice()
                 ));
         }
-        
+        System.out.println("End get bus service....");
+
         return list;
     }
 

@@ -91,7 +91,7 @@ public class CustomerManagementService {
         return listBooking;
     }
 
-    public boolean cancelBooking(int id, String username) throws ParseException {
+    public boolean payBooking(int id, String username) throws ParseException {
         System.out.println("Start cancel booking service....");
 
         User user = userRepository.findByUserNameCP(username);
@@ -101,14 +101,35 @@ public class CustomerManagementService {
         Date createdDate = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).parse(booking.getCreatedDate());
         Date now = new Date();
         
-        Calendar calendar = Calendar.getInstance();
+        /*Calendar calendar = Calendar.getInstance();
         calendar.setTime(createdDate);
         calendar.add(Calendar.HOUR, 24);
         if(calendar.getTime().before(now)) {
             return false;
-        }
+        }*/
         System.out.println("End cancel booking service....");
 
-        return bookingRepository.update(id,user.getId());
+        return bookingRepository.payBookingCP(id,user.getId());
+    }
+
+    public boolean cancelBooking(int id, String username) throws ParseException {
+        System.out.println("Start cancel booking service....");
+
+        User user = userRepository.findByUserNameCP(username);
+
+        Booking booking = bookingRepository.findByIdCP(id);
+
+        Date createdDate = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).parse(booking.getCreatedDate());
+        Date now = new Date();
+
+        /*Calendar calendar = Calendar.getInstance();
+        calendar.setTime(createdDate);
+        calendar.add(Calendar.HOUR, 24);
+        if(calendar.getTime().before(now)) {
+            return false;
+        }*/
+        System.out.println("End cancel booking service....");
+
+        return bookingRepository.updateCP(id,user.getId());
     }
 }

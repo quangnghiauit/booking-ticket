@@ -64,7 +64,7 @@ public class BusRouteRepository {
             try (Connection con = DataAccessHelper.getConnection();
                  Statement statement = con.createStatement();
                  ResultSet rs=statement.executeQuery(sqlSelect);) {
-                Thread.sleep(2000);
+                //Thread.sleep(2000);
                 rs.next();
                 busRoute = new Bus_Route(
                         Integer.parseInt(rs.getString("id")),
@@ -74,7 +74,7 @@ public class BusRouteRepository {
                 );
             }
 
-        } catch (SQLException | InterruptedException e) {
+        } catch (SQLException e){// | InterruptedException e) {
             e.printStackTrace();
         }
         return busRoute;
