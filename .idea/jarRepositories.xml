@@ -8,13 +8,8 @@
     </remote-repository>
     <remote-repository>
       <option name="id" value="github" />
-      <option name="name" value="tnd4698" />
-      <option name="url" value="https://maven.pkg.github.com/tnd4698/common-libs" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="central" />
-      <option name="name" value="Central Repository" />
-      <option name="url" value="https://repo.maven.apache.org/maven2" />
+      <option name="name" value="repo" />
+      <option name="url" value="https://maven.pkg.github.com/tnd4698/repo" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
