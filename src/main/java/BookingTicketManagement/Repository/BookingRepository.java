@@ -53,7 +53,6 @@ public class BookingRepository {
                  Statement statement = con.createStatement();
                  ResultSet rs=statement.executeQuery(SQL);) {
                 //Thread.sleep(2000);
-                rs.next();
                 while (rs.next()) {
                     list.add(new Booking(
                             Integer.parseInt(rs.getString("id")),
