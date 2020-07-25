@@ -45,7 +45,7 @@ public class RouteRepository {
             try (Connection con = DataAccessHelper.getConnection();
                  Statement statement = con.createStatement();
                  ResultSet rs=statement.executeQuery(sqlSelect);) {
-                Thread.sleep(2000);
+                //Thread.sleep(2000);
                 while(rs.next()) {
                     list.add(new Route(
                             Integer.parseInt(rs.getString("id")),
@@ -57,7 +57,7 @@ public class RouteRepository {
                 }
             }
 
-        } catch (SQLException | InterruptedException e) {
+        } catch (SQLException e) {// | InterruptedException e) {
             e.printStackTrace();
         }
         System.out.println("End get route repo....");

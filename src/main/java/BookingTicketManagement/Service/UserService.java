@@ -169,7 +169,7 @@ public class UserService {
         ArrayList<SeatDTO> list = new ArrayList<>();
         
         for(Seat seat : listSeat) {
-            if (list.size() == 4) return list;
+            //if (list.size() == 4) return list;
 
             System.out.println("Start find " + list.size() + " seats");
             ArrayList<Booking> listBooking = bookingRepository.findCP(seat.getId(),departure);
