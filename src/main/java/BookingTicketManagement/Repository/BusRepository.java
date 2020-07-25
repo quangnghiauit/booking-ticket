@@ -14,9 +14,9 @@ public class BusRepository {
 
         String SQL = "select * from `bus` where id=\""+id+"\"";
         Bus bus = null;
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 bus = new Bus(

@@ -15,9 +15,9 @@ public class TypeRepository {
 
         String SQL = "select * from `type`";
         ArrayList<Type> list = new ArrayList<>();
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 list.add(new Type(
@@ -62,9 +62,9 @@ public class TypeRepository {
 
         String SQL = "select * from `type` where id=\""+id+"\"";
         Type type = null;
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 type = new Type(
