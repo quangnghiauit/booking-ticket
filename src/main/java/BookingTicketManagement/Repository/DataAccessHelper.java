@@ -28,16 +28,7 @@ public class DataAccessHelper {
         }
     }
 
-    public DataAccessHelper() throws SQLException {
-        System.out.println("Getting connection .........");
-        conn = cpds.getConnection();
-        System.out.println("Getting connection successfull .........");
-    }
     public Connection conn=null;
-
-    public static DataAccessHelper getInstance() throws SQLException {
-        return new DataAccessHelper();
-    }
 
     public static Connection getConnection() throws SQLException {
         System.out.println("Getting connection pool...... ");

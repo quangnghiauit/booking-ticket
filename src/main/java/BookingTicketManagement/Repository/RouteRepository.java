@@ -17,9 +17,9 @@ public class RouteRepository {
 
         String SQL = "select * from `route`";
         ArrayList<Route> list = new ArrayList<>();
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
 
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 list.add(new Route(
@@ -69,9 +69,9 @@ public class RouteRepository {
 
         String SQL = "select * from `route` where id=\""+id+"\"";
         Route route = null;
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 route = new Route(
@@ -119,9 +119,9 @@ public class RouteRepository {
 
         String SQL = "select * from `route` where `from`=\""+from+"\" and `to`=\""+to+"\" and `timeGo`=\""+departureTime+"\"";
         Route route=null;
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 route = new Route(
