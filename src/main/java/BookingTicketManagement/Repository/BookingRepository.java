@@ -18,9 +18,9 @@ public class BookingRepository {
 
         String SQL = "select * from `booking` where seat=\""+seatId+"\" and departure=\""+departure+"\"";
         ArrayList<Booking> list = new ArrayList<>();
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
 
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 list.add(new Booking(
@@ -86,9 +86,9 @@ public class BookingRepository {
                     "\""+ routeId +"\"," +
                     "\""+ (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(createdDate) +"\" " +
                     ")";
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             int rs=statement.executeUpdate(SQL);
             if(rs>0)
             {
@@ -107,9 +107,9 @@ public class BookingRepository {
 
         String SQL = "select * from `booking` where user=\""+id+"\"";
         ArrayList<Booking> list = new ArrayList<>();
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 list.add(new Booking(
@@ -166,9 +166,8 @@ public class BookingRepository {
     public Booking findById(int id) {
         String SQL = "select * from `booking` where id=\""+id+"\"";
         Booking booing = null;
-        try{
-            
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 booing = new Booking(
@@ -231,9 +230,9 @@ public class BookingRepository {
                     "where `id`=\"" + id + "\""
                     ;
 
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
 
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             int rs=statement.executeUpdate(SQL);
             if(rs>0)
             {
@@ -306,9 +305,9 @@ public class BookingRepository {
 
         String SQL = "select * from `booking`";
         ArrayList<Booking> list = new ArrayList<>();
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 list.add(new Booking(
@@ -339,9 +338,8 @@ public class BookingRepository {
                     "where `id`=\"" + id + "\""
                     ;
             
-        try{
-            
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             int rs=statement.executeUpdate(SQL);
             if(rs>0)
             {

@@ -16,9 +16,9 @@ public class SeatRepository {
 
         String SQL = "select * from `seat` where bus=\""+busId+"\"";
         ArrayList<Seat> list = new ArrayList<>();
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 list.add(new Seat(
@@ -36,9 +36,9 @@ public class SeatRepository {
 
         String SQL = "select * from `seat` where id=\""+id+"\"";
         Seat seat = null;
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 seat = new Seat(
@@ -82,9 +82,9 @@ public class SeatRepository {
 
          String SQL = "select * from `seat`";
         ArrayList<Seat> list = new ArrayList<>();
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 list.add(new Seat(

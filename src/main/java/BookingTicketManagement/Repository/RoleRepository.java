@@ -1,6 +1,8 @@
 package BookingTicketManagement.Repository;
 
 import BookingTicketManagement.Model.Role;
+
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -11,9 +13,9 @@ public class RoleRepository {
 
 		String SQL = "select * from `role` where id=\""+id+"\"";
         Role role = null;
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 role = new Role(
@@ -30,9 +32,9 @@ public class RoleRepository {
 
         String SQL = "select * from `role` where role=\""+roleName+"\"";
         Role role = null;
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 role = new Role(
@@ -49,9 +51,9 @@ public class RoleRepository {
 
         String SQL = "select * from `role`";
         ArrayList<Role> list = new ArrayList<>();
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement()){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 list.add(new Role(

@@ -47,6 +47,7 @@
                 <version>2.2</version>
                 <configuration>
                     <port>8080</port>
+                    <server>my-tomcat</server>
                 </configuration> </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

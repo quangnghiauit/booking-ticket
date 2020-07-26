@@ -17,9 +17,9 @@ public class UserRepository {
 	
         String SQL = "select * from `user` where username=\""+username+"\"";
         User user = null;
-        try{
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
-            ResultSet rs=statement.executeQuery(SQL);            
+        try (Connection con = DataAccessHelper.getConnection();
+             Statement statement = con.createStatement();
+             ResultSet rs=statement.executeQuery(SQL);) {
             while(rs.next()) {
                 user = new User(
                         Integer.parseInt(rs.getString("id")),
@@ -109,18 +109,18 @@ public class UserRepository {
                     "\""+ createdBy +"\"" +
                     ")"
                 ;
-        try{
-            
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement();){
+
             int rs=statement.executeUpdate(SQL);
             if(rs>0)
             {
-                
+
                 return true;
             }
             else
             {
-                
+
                 return false;
             }
         } catch (Exception e) {return false;}
@@ -141,9 +141,9 @@ public class UserRepository {
                     "where `id`=\"" + id + "\""
                     ;
             
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement();){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             int rs=statement.executeUpdate(SQL);
             if(rs>0)
             {
@@ -162,9 +162,9 @@ public class UserRepository {
 
         String SQL = "select * from `user` where id=\""+id+"\"";
         User user = null;
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement();){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 user = new User(
@@ -192,9 +192,9 @@ public class UserRepository {
 
         String SQL = "select * from `user`";
         ArrayList<User> list = new ArrayList<>();
-        try{
+        try(Connection con = DataAccessHelper.getConnection();
+            Statement statement = con.createStatement();){
             
-            Statement statement =DataAccessHelper.getInstance().conn.createStatement();
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next()) {
                 list.add(new User(
