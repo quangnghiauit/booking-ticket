@@ -47,7 +47,7 @@
     </nav>
     <div class="content">
         <div class="col-12 text-center hd" style="margin-top: 7%;">
-                <h2>Seats</h2>
+                <h2>List of seats</h2>
         </div>
         <!-- animation search -->
         <div class="container h-100 anms">
