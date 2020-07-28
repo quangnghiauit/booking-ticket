@@ -106,7 +106,7 @@
     </div>
   </nav>
   <!-- Carousel -->
-  <div id="slides" class="carousel slide" data-ride="carousel">
+  <div id="slides" class="carousel slide" data-ride="carousel" style="margin-bottom: 2rem;">
     <ul class="carousel-indicators">
       <li data-target="#slides" data-slide-to="0" class="active"></li>
       <li data-target="#slides" data-slide-to="1"></li>
@@ -116,26 +116,19 @@
       <div class="carousel-item active">
         <img src="./images/bus2.jpg">
         <div class="carousel-caption">
-          <h1 class="display-3">Wherever you want</h1>
-          <a class="btn btn-primary btn-lg" href="#" role="button">Book now!!!</a>
+            <img src="assets/img/BestInTravel.svg">
         </div>
       </div>
       <div class="carousel-item">
         <img src="./images/maldive.jpg">
         <div class="carousel-caption">
-          <h1 class="display-3">Affordable</h1>
-          <button type="button" class="btn btn-primary btn-lg">
-            Book now
-          </button>
+            <img src="assets/img/BestInTravel.svg">
         </div>
       </div>
       <div class="carousel-item">
         <img src="./images/comf.jpg">
         <div class="carousel-caption">
-          <h1 class="display-3">Comfortable</h1>
-          <button type="button" class="btn btn-primary btn-lg">
-            Book now
-          </button>
+            <img src="assets/img/BestInTravel.svg">
         </div>
       </div>
     </div>
@@ -169,6 +162,12 @@
                                out.println("<option value=\""+from+"\">"+from+"</option>");
                              }
                          %>
+                  <option value="">Đà Nẵng</option>
+                  <option value="">Hà Nội</option>
+                  <option value="">Nha Trang</option>
+                  <option value="">Long Xuyên</option>
+                  <option value="">Hà Tiên</option>
+                  <option value="">Cà Mau</option>
               </select>
             </div>
           </div>
@@ -178,7 +177,7 @@
               <span class="form-label">To</span>
               <select class="form-control" name="to" required>
                 <option value="">Choose arrival place</option>
-                <% 
+                <%
                           cleanList.clear();
                           for(Route route : listRoute) {
                                cleanList.add(route.getTo());
@@ -187,6 +186,12 @@
                                out.println("<option value=\""+to+"\">"+to+"</option>");
                              }
                          %>
+                  <option value="">Đà Nẵng</option>
+                  <option value="">Hà Nội</option>
+                  <option value="">Nha Trang</option>
+                  <option value="">Long Xuyên</option>
+                  <option value="">Hà Tiên</option>
+                  <option value="">Cà Mau</option>
               </select>
             </div>
           </div>
@@ -203,7 +208,7 @@
               <span class="form-label">Departure time</span>
               <select class="form-control" name="departureTime" required>
                 <option value="">Choose departure time</option>
-                <% 
+                <%
                           cleanList.clear();
                           for(Route route : listRoute) {
                                cleanList.add(route.getTimeGo());
@@ -240,75 +245,66 @@
   </div>
   <hr class="hrb">
   <div class="Des col-12 text-center">
-    <h1>Location</h1>
+    <h1>HOT LOCATION</h1>
   </div>
-  <div class="container-fluid padding">
+  <div class="container-fluid padding" style="width: 80%;">
     <div class="ides row padding">
       <div class="fhcm col-xs-12 col-sm-6 col-md-4">
         <img src="./images/BenThanh.jpg" class="img-fluid">
-        <p> <i class="fas fa-bus"></i> <b>Origin:</b> <span class="badge badge-secondary">SÀI GÒN</span></p>
-        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination:</b>Cần Thơ, Cà Mau, Đà Lạt, Nha Trang,...</P>
+        <p> <i class="fas fa-bus"></i> <b>Departure:</b> <span class="badge badge-secondary">HỒ Chí Minh</span></p>
+        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination: </b>Cần Thơ, Cà Mau, Đà Lạt, Nha Trang,...</P>
         <p> <i class="fas fa-phone-square"></i> <b>Hotline:</b> 0982 765 999</p>
-        <a href="#"><i>Detail>></i></a>
       </div>
       <div class="fhn col-xs-12 col-sm-6 col-md-4">
         <img src="./images/hn.jpg" class="img-fluid">
-        <p> <i class="fas fa-bus"></i> <b>Origin:</b> <span class="badge badge-secondary">HÀ NỘI</span></p>
-        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination:</b>Đà Nẵng, Nam Định, Huế, Phan Thiết,...</P>
+        <p> <i class="fas fa-bus"></i> <b>Departure:</b> <span class="badge badge-secondary">HÀ NỘI</span></p>
+        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination: </b>Đà Nẵng, Nam Định, Huế, Phan Thiết,...</P>
         <p> <i class="fas fa-phone-square"></i> <b>Hotline:</b> 0243 776 142</p>
-        <a href="#"><i>Detail>></i></a>
       </div>
       <div class="fdn col-xs-12 col-sm-6 col-md-4">
         <img src="./images/dn.jpg" class="img-fluid">
-        <p> <i class="fas fa-bus"></i> <b>Origin:</b> <span class="badge badge-secondary">ĐÀ NẴNG</span></p>
-        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination:</b>Đà Lạt, Sài Gòn, Nha Trang, Hà Nội, Bảo Lộc,...</P>
+        <p> <i class="fas fa-bus"></i> <b>Departure:</b> <span class="badge badge-secondary">ĐÀ NẴNG</span></p>
+        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination: </b>Đà Lạt, Sài Gòn, Nha Trang, Hà Nội, Bảo Lộc,...</P>
         <p> <i class="fas fa-phone-square"></i> <b>Hotline:</b> 0243 798 332</p>
-        <a href="#"><i>Detail>></i></a>
       </div>
       <div class="fdl col-xs-12 col-sm-6 col-md-4">
         <img src="./images/dl.png" class="img-fluid">
-        <p> <i class="fas fa-bus"></i> <b>Origin:</b> <span class="badge badge-secondary">ĐÀ LẠT</span></p>
-        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination:</b>Nha Trang, Đà Nẵng, Huế, Sài Gòn, Cần Thơ,...</P>
+        <p> <i class="fas fa-bus"></i> <b>Departure:</b> <span class="badge badge-secondary">ĐÀ LẠT</span></p>
+        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination: </b>Nha Trang, Đà Nẵng, Huế, Sài Gòn, Cần Thơ,...</P>
         <p> <i class="fas fa-phone-square"></i> <b>Hotline:</b> 0989 018 999</p>
-        <a href="#"><i>Detail>></i></a>
       </div>
       <div class="fnt col-xs-12 col-sm-6 col-md-4">
         <img src="./images/nt.jpg" class="img-fluid">
-        <p> <i class="fas fa-bus"></i> <b>Origin:</b> <span class="badge badge-secondary">NHA TRANG</span></p>
-        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination:</b>Đà Nẵng, Huế, Sài Gòn, Cần Thơ, Quy Nhơn,...</P>
+        <p> <i class="fas fa-bus"></i> <b>Departure:</b> <span class="badge badge-secondary">NHA TRANG</span></p>
+        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination: </b>Đà Nẵng, Huế, Sài Gòn, Cần Thơ, Quy Nhơn,...</P>
         <p> <i class="fas fa-phone-square"></i> <b>Hotline:</b> 0234 928 009</p>
-        <a href="#"><i>Detail>></i></a>
       </div>
       <div class="fct col-xs-12 col-sm-6 col-md-4">
         <img src="./images/ct.jpg" class="img-fluid">
-        <p> <i class="fas fa-bus"></i> <b>Origin:</b> <span class="badge badge-secondary">CẦN THƠ</span></p>
-        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination:</b>Sài Gòn, Cà Mau, Rạch Giá, Đà Lạt,...</P>
+        <p> <i class="fas fa-bus"></i> <b>Departure:</b> <span class="badge badge-secondary">CẦN THƠ</span></p>
+        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination: </b>Sài Gòn, Cà Mau, Rạch Giá, Đà Lạt,...</P>
         <p> <i class="fas fa-phone-square"></i> <b>Hotline:</b> 0247 908 012</p>
-        <a href="#"><i>Detail>></i></a>
       </div>
       <div class="flx col-xs-12 col-sm-6 col-md-4">
         <img src="./images/lx.jpg" class="img-fluid">
-        <p> <i class="fas fa-bus"></i> <b>Origin:</b> <span class="badge badge-secondary">LONG XUYÊN</span></p>
-        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination:</b>Sài Gòn, Cần Thơ,...</P>
+        <p> <i class="fas fa-bus"></i> <b>Departure:</b> <span class="badge badge-secondary">LONG XUYÊN</span></p>
+        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination: </b>Sài Gòn, Cần Thơ,...</P>
         <p> <i class="fas fa-phone-square"></i> <b>Hotline:</b> 0987 118 212</p>
         <br>
-        <a href="#"><i>Detail>></i></a>
       </div>
       <div class="fht col-xs-12 col-sm-6 col-md-4">
         <img src="./images/ht.jpg" class="img-fluid">
-        <p> <i class="fas fa-bus"></i> <b>Origin:</b> <span class="badge badge-secondary">HÀ TIÊN</span></p>
-        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination:</b>Sài Gòn, Cần Thơ,...</P>
+        <p> <i class="fas fa-bus"></i> <b>Departure:</b> <span class="badge badge-secondary">HÀ TIÊN</span></p>
+        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination: </b>Sài Gòn, Cần Thơ,...</P>
         <p> <i class="fas fa-phone-square"></i> <b>Hotline:</b> 0987 888 319</p>
         <br>
-        <a href="#"><i>Detail>></i></a>
       </div>
       <div class="fcm col-xs-12 col-sm-6 col-md-4">
         <img src="./images/cm.jpg" class="img-fluid">
-        <p> <i class="fas fa-bus"></i> <b>Origin:</b> <span class="badge badge-secondary">CÀ MAU</span></p>
-        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination:</b>Sài Gòn, Cần Thơ,...</P>
+        <p> <i class="fas fa-bus"></i> <b>Departure:</b> <span class="badge badge-secondary">CÀ MAU</span></p>
+        <P> <i class="fas fa-map-marker-alt"></i> <b>Destination: </b>Sài Gòn, Cần Thơ,...</P>
         <p> <i class="fas fa-phone-square"></i> <b>Hotline:</b> 0989 718 919</p>
         <br>
-        <a href="#"><i>Detail>></i></a>
       </div>
       <hr class="hrdes">
     </div>
@@ -316,7 +312,7 @@
   <div class="ser col-12 text-center">
     <h1>Free Services</h1>
   </div>
-  <div class="row text-center padding">
+  <div class="row text-center padding" style="margin-left: 200px; margin-right: 200px;">
     <div class="col-xs-12 col-sm-6 col-md-4">
       <img src="./images/wifi.png">
       <h3>Wifi</h3>

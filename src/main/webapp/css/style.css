@@ -117,7 +117,8 @@
 }
 .badge
 {
-  background-color: red;
+  background-color: #ddff00;
+  color: #b2aad2;
   font-size: 100%;
 }
 .fa-bus{
