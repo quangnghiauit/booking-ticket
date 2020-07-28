@@ -34,8 +34,8 @@ public class GetBusBooking extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         
-        String from = request.getParameter("from");
-        String to = request.getParameter("to");
+        String from = new String(request.getParameter("from").getBytes("iso-8859-1"), "utf-8");
+        String to = new String(request.getParameter("to").getBytes("iso-8859-1"), "utf-8");
         String departureTime = request.getParameter("departureTime");
         String departureDate = request.getParameter("departureDate");
         int type = Integer.parseInt(request.getParameter("type"));
@@ -43,12 +43,12 @@ public class GetBusBooking extends HttpServlet {
         Route route = null;
         
         for(Route item : service.getRoutes()) {
-            /*if(item.getFrom().equals(from) && item.getTo().equals(to) && item.getTimeGo().equals(departureTime)){
+            if(item.getFrom().equals(from) && item.getTo().equals(to) && item.getTimeGo().equals(departureTime)){
                 route = item;
                 break;
-            }*/
-            route = item;
-            break;
+            }
+            /*route = item;
+            break;*/
         }
         
         if(route == null) {
@@ -72,11 +72,11 @@ public class GetBusBooking extends HttpServlet {
         
         HashMap<Integer, ArrayList<SeatDTO>> listSeatByBusId = new HashMap<>();
         
-        /*for(BusDTO bus : listBus) {
+        for(BusDTO bus : listBus) {
             
             ArrayList<SeatDTO> listSeat = service.getSeat(bus.getId(),bus.getDepartureTime(),route.getId());
             listSeatByBusId.put(bus.getId(), listSeat);
-        }*/
+        }
         
         ArrayList<Type> types = service.getTypes();
         ArrayList<Route> listRoute = service.getRoutes();

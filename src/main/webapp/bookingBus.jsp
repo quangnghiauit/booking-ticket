@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="text-align: -webkit-center;">
         <!-- Navigation bar-->
         <nav class="navbar navbar-expand-sm">
             <div class="container-fluid">
@@ -200,7 +200,7 @@
             </div>
         </form>
 
-        <table class="table table-bordered" id="table-bus">
+        <table class="table table-bordered" id="table-bus" style="width: 80%;">
             <thead>
                 <tr>
                     <th>Bus</th>

@@ -117,9 +117,9 @@
                     <h4>Nguyễn Quang Nghĩa</h4>
                     <p class="text-muted">Admin features developer</p>
                     <ul class="list-inline social-buttons">
-                        <li class="list-inline-item"><a href="https://www.facebook.com/quangnghia.ng"><i class="fa fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.facebook.com/quangnghia.ng"><i class="fa fa-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.facebook.com/quangnghia.ng"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/quangnghia.ng" style="display: inline-flex; justify-content: center; align-items: center;"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/quangnghia.ng" style="display: inline-flex; justify-content: center; align-items: center;"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/quangnghia.ng" style="display: inline-flex; justify-content: center; align-items: center;"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -128,9 +128,9 @@
                     <h4>Nguyễn Cao Luyện</h4>
                     <p class="text-muted">Customer features developer</p>
                     <ul class="list-inline social-buttons">
-                        <li class="list-inline-item"><a href="https://www.facebook.com/luyen2k2"><i class="fa fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.facebook.com/luyen2k2"><i class="fa fa-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.facebook.com/luyen2k2"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/luyen2k2" style="display: inline-flex; justify-content: center; align-items: center;"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/luyen2k2" style="display: inline-flex; justify-content: center; align-items: center;"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/luyen2k2" style="display: inline-flex; justify-content: center; align-items: center;"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -139,9 +139,9 @@
                     <h4>Nguyễn Duy Tân</h4>
                     <p class="text-muted">Seller features developer</p>
                     <ul class="list-inline social-buttons">
-                        <li class="list-inline-item"><a href="https://www.facebook.com/tan.nd98/"><i class="fa fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.facebook.com/tan.nd98/"><i class="fa fa-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.facebook.com/tan.nd98/"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/tan.nd98/" style="display: inline-flex; justify-content: center; align-items: center;"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/tan.nd98/" style="display: inline-flex; justify-content: center; align-items: center;"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/tan.nd98/" style="display: inline-flex; justify-content: center; align-items: center;"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -185,9 +185,9 @@
             <div class="col-md-4"><span class="copyright">Copyright&nbsp;© Brand 2018</span></div>
             <div class="col-md-4">
                 <ul class="list-inline social-buttons">
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li class="list-inline-item"><a href="#" style="display: inline-flex; justify-content: center; align-items: center;"><i class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#" style="display: inline-flex; justify-content: center; align-items: center;"><i class="fa fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="#" style="display: inline-flex; justify-content: center; align-items: center;"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
             </div>
             <div class="col-md-4">
