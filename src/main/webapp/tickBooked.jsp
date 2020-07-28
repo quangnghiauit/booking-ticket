@@ -130,7 +130,7 @@
               </div>
               <div class="service col-md-6">
                   <h1>About us</h1>
-                  <img src="./images/logo4.png">
+                  <img src="../images/logo4.png">
               </div>
           </div>
       </div>
