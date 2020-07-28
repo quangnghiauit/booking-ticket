@@ -1,5 +1,5 @@
 # booking-ticket
-I. Đồ án môn J2EE - Danh sách thành viên :
+I. Danh sách thành viên :
 
 1. 16520810 - Nguyễn Quang Nghĩa
 2. 16520713 - Nguyễn Cao Luyện
